@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {{{body}}}
-  </body>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/semantic/dist/semantic.css"/>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui left fixed inverted vertical menu">
+    <div class="item">
+        <img class="ui small centered image" src="/images/planet-earth.svg">
+    </div>
+    <a class="item active">
+        Dashboard
+    </a>
+    <a class="item">
+        Open PULSE
+    </a>
+    <a class="item bottom">
+        Logout
+    </a>
+</div>
+
+{{{body}}}
+</body>
 </html>
