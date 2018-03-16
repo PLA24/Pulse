@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accessible Map</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.1.0/css/ol.css" type="text/css">
+<script src="https://openlayers.org/en/v4.1.0/build/ol.js"></script>
+<body>
+  <div id="map" class="map"></div>
+  <script>
+    var planet_url = "https://tiles.planet.com/data/v1/PSScene3Band/20161221_024131_0e19/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e"
+    var map = new ol.Map({
+      layers: [
+        // Layer 1, Open Street Map base layer
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        }),
+        // Layer 2, A single Planet item
+        new ol.layer.Tile({
+          source: new ol.source.XYZ({url: planet_url})
+        })
+      ],
+      target: 'map',
+      view: new ol.View({
+        center: [0, 0],
+        zoom: 0
+      })
+    });
+  </script>
+  </body>
+</html>
