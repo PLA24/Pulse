@@ -1,30 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Accessible Map</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v4.1.0/css/ol.css" type="text/css">
-<script src="https://openlayers.org/en/v4.1.0/build/ol.js"></script>
+
+<head>
+  <title>Vector Layer</title>
+  <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/javascripts/openlayer.js"></script>
+  <link rel="stylesheet" href="/stylesheets/map.css" type="text/css">
+  <link href="/stylesheets/map.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
 <body>
-  <div id="map" class="map"></div>
-  <script>
-    var planet_url = "https://tiles.planet.com/data/v1/PSScene3Band/20161221_024131_0e19/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e"
+  <div id="map" class="map">
+    <div id="popup"></div>
+  </div>
+  <div id="info">&nbsp;</div>
+    <script>
     var map = new ol.Map({
       layers: [
-        // Layer 1, Open Street Map base layer
+        //base layer van openstreet
         new ol.layer.Tile({
           source: new ol.source.OSM()
         }),
-        // Layer 2, A single Planet item
+        //planet mosaic tile layer
         new ol.layer.Tile({
-          source: new ol.source.XYZ({url: planet_url})
-        })
+          source: new ol.source.XYZ({
+            url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2018_02_mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
+          })
+        }),
+
+        //gemeente layer
+        vectorGemeenteLayer,
+        //pulse icon
+        vectorLayer
       ],
+      //view eigenschappen
       target: 'map',
       view: new ol.View({
-        center: [0, 0],
-        zoom: 0
+        center: ol.proj.fromLonLat([5.498573, 52.165923]),
+        minZoom: 8,
+        maxZoom: 18,
+        zoom: 8,
+        extent: [500000, 6750000, 750000, 7000000]
       })
     });
-  </script>
+
+    //eigenschappen van popup
+    var element = document.getElementById('popup');
+
+    var popup = new ol.Overlay({
+      element: element,
+      positioning: 'bottom-center',
+      stopEvent: false,
+      offset: [0, -50]
+    });
+    map.addOverlay(popup);
+
+    // display popup on click
+    map.on('click', function(evt) {
+      var feature1 = map.forEachFeatureAtPixel(evt.pixel,
+        function(feature1, layer) {
+          if (layer == vectorLayer) {
+            return feature1;
+          }
+        });
+      if (feature1) {
+
+        var coordinates = feature1.getGeometry().getCoordinates();
+        popup.setPosition(coordinates);
+        $(element).popover({
+          'placement': 'top',
+          'html': true,
+          'content': feature1.get('name')
+        });
+        $(element).popover('show');
+      } else {
+        $(element).popover('destroy');
+      }
+    });
+    </script>
   </body>
 </html>
