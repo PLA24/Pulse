@@ -1,5 +1,5 @@
 {
-  "base": "public/stylesheets/semantic/",
+  "base": "public/semantic/",
   "paths": {
     "source": {
       "config": "src/theme.config",
