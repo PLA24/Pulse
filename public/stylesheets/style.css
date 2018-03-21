@@ -1,8 +1,15 @@
 body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
-a {
-    color: #00B7FF; }
+#map {
+    overflow: auto;
+    height: calc(91vh);
+}
+
+#topbar {
+    margin: 0;
+    height: 9vh;
+}
 
 /*# sourceMappingURL=style.css.map */
