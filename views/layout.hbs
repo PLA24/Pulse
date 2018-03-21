@@ -4,6 +4,7 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel="stylesheet" href="/semantic/dist/semantic.css"/>
+
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -11,13 +12,20 @@
     <script src="/semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-<div class="ui left fixed inverted vertical menu">
+<div id="sidebar" class="ui left visible vertical inverted sidebar labeled icon menu">
+    <a class="item" href="/">
+        <i class="home icon"></i>
+        Home
     </a>
-    <a class="item">
-        <i class="block icon"></i>
+    <a class="item" href="/map">
+        <i class="block map icon"></i>
+        Map
+    </a>
+    <a class="item" href="/settings">
+        <i class="wrench icon"></i>
+        Settings
     </a>
 </div>
-
 {{{body}}}
 </body>
 </html>
