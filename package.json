@@ -24,6 +24,5 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"
-
   }
 }

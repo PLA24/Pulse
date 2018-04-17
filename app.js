@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-
+var expressSesion = require('express-validator');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var map = require('./routes/map');
@@ -22,13 +22,15 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
+app.use(expressSesion({secret: 'max', saveUnitilialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 var api = express.Router();
 // var expressValidator = require('express-validator');
 // api.use(expressValidator());
 //const expressValidator = require('express-validator');
-app.use(expressValidator(middlewareOptions));
+//app.use(expressValidator(middlewareOptions));
 
 
 app.use('/', index);
