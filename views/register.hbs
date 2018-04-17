@@ -10,7 +10,7 @@
 
   <style type="text/css">
     body {
-      
+
       background-image: url("https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/3191/7/190959054/634938835.mp4?token=1522084345-0x804f715212595d6e6e7b41be5c2bbb3f779fc539");
     }
     body > .grid {
@@ -34,7 +34,7 @@
         Register
       </div>
     </h2>
-    <form class="ui large form">
+    <form class="ui large form" method = "post" action="/users/register">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
@@ -58,13 +58,13 @@
           <div class="ui left icon input">
             <i class="lock icon"></i>
             <input type="password" name="repassword" placeholder="Re-enter Password">
-          </div>    
+          </div>
         </div>
         <div class="field">
             <div class="ui fluid search selection dropdown">
-                <input type="hidden" name="region"><i class="building icon"></i>
+                <input type="hidden" name="Township"><i class="building icon"></i>
                 <i class="dropdown icon"></i>
-                <div class="default text">Select Region</div>
+                <div class="default text">Select township</div>
                 <div class="menu">
                     <div class="item" data-value="zw">Zimbabwe</div>
                     <div class="item" data-value="zw">Zimbabwe2</div>
@@ -75,12 +75,13 @@
                     <div class="item" data-value="zw">Zimbabwe7</div>
                 </div>
                 </div>
-          </div> 
+          </div>
         <div class="ui fluid large teal submit button">Sign up!</div>
+        <button type="submit" class="ui fluid large teal submit button" name="Sign-Up">Sign-Up</button>
       </div>
 
       <div class="ui error message"></div>
-      
+
 
     </form>
   </div>
