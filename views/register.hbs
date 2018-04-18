@@ -34,6 +34,11 @@
         Register
       </div>
     </h2>
+    {{#if errors}}
+      {{#each errors}}
+        <div class = "ui warning message">{{msg}}</div>
+        {{/each}}
+        {{/if}}
     <form class="ui large form" method = "post" action="/users/register">
       <div class="ui stacked segment">
         <div class="field">
@@ -68,15 +73,14 @@
                 <div class="menu">
                     <div class="item" data-value="zw">Zimbabwe</div>
                     <div class="item" data-value="zw">Zimbabwe2</div>
-                    <div class="item" data-value="zw">Zimbabwe3</div>
-                    <div class="item" data-value="zw">Zimbabwe4</div>
-                    <div class="item" data-value="zw">Zimbabwe5</div>
+                    <div class="item" value="zw">Zimbabwe3</div>
+                    <div class="item" value="zw">Zimbabwe4</div>
+                    <div class="item" value="zw">Zimbabwe5</div>
                     <div class="item" data-value="zw">Zimbabwe6</div>
                     <div class="item" data-value="zw">Zimbabwe7</div>
                 </div>
                 </div>
           </div>
-        <div class="ui fluid large teal submit button">Sign up!</div>
         <button type="submit" class="ui fluid large teal submit button" name="Sign-Up">Sign-Up</button>
       </div>
 
