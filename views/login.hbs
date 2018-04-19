@@ -9,10 +9,6 @@
 
 
   <style type="text/css">
-    body {
-
-      background-image: url("https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/3191/7/190959054/634938835.mp4?token=1522084345-0x804f715212595d6e6e7b41be5c2bbb3f779fc539");
-    }
     body > .grid {
       height: 100%;
     }
@@ -22,6 +18,15 @@
     .column {
       max-width: 450px;
     }
+    #video-bg-elem {
+				position: absolute;
+				top: 0;
+				left: 0;
+				min-height: 100%;
+				min-width: 100%;
+			}
+
+
   </style>
   <script>
   $(document)
@@ -63,11 +68,16 @@
   </script>
 </head>
 <body>
+  <div class="background-wrap">
+        <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
+          <source src="/video/background.mp4" type="video/mp4">
+          Sorry That The Amazing video Is Not Supported Please Contact us and tell us which operating system or which browser you use Sorry!
+        </video>
+      </div>
 
-<div class="ui middle aligned center aligned grid">
   <div class="column">
+    <img class="ui small image" src="/images/pulselogo.png">
     <h2 class="ui teal image header">
-      <img src="assets/images/logo.png" class="image">
       <div class="content">
         Log-in to your account
       </div>

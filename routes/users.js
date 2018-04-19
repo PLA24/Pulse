@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var flash = require('express-flash');
 
 var User = require('../models/user');
 
@@ -74,9 +74,9 @@ router.post('/register', function(req, res) {
         console.log(user);
       });
 
-      //req.flash('succes_msg', 'You are registered and can now login');
+      req.flash('succes_msg', 'You are registered and can now login');
 
-      res.redirect('/users/login');
+      res.redirect('/users/login')
   }
 
 

@@ -6,4 +6,5 @@ router.get('/', function(req, res) {
     res.render('register', {layout: 'layoutempty'});
 });
 
+
 module.exports = router;

@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSesion = require('express-validator');
+var flash = require('express-flash');
+var session = require('express-session');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var map = require('./routes/map');
@@ -25,6 +27,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(expressSesion({secret: 'max', saveUnitilialized: false, resave: false}));
+
+app.use(session({
+  secret: 'secret',
+  saveUnitilialized: true,
+  resave: true
+
+}));
+
+
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 var api = express.Router();
 // var expressValidator = require('express-validator');
@@ -55,6 +67,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
 
 
 
