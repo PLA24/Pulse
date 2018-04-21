@@ -1,0 +1,95 @@
+.no-italics {
+    font-style: normal;
+}
+#topmenuContainerWrapper{
+    width: 100%;
+    height:20%;
+    background-color: white;
+}
+#ourTeamContainer{
+    width: 100%;
+    margin-top:25px;
+}
+#topmenuContainer{
+
+}
+#contentContainerLogo{
+    border-right: 1px solid #b5b6b6;
+    width: 15%;
+    height: 100%;
+    float: left;
+    padding: 20px;
+}
+#contentContainerNav{
+    width: 100%;
+    height: 100%;
+}
+#imageInDiv{
+    margin-top: -15px;
+    width: 100%;
+}
+#navBar{
+    height:50%;
+    width:60%;
+    float:left;
+    position:relative;
+    border-bottom: 1px solid #b5b6b6;
+}
+#navBarItems{
+    border-right: 1px solid #b5b6b6 ;
+    width:16.66%;
+    float:left;
+    height: 100%;
+    margin: auto;
+}
+#lastNavBarItem{
+    width: 16.66%;
+    float: left;
+    height: 100%;
+    margin: auto;
+}
+#navBarButton{
+    width:min-content;
+    text-align: center;
+    text-color: black;
+    color: #363945;
+}
+#underNavBar{
+    background-color: #e8e8e8;
+    height:50%;
+    width:60.01%;
+    float:left;
+}
+#rightnavWrapper{
+    width: 25%;
+    height:100%;
+    float: right;
+}
+#buttonWrapper{
+    border-left: 1px solid #b5b6b6 ;
+    width:50%;
+    float:left;
+    height: 100%;
+    margin: auto;
+}
+#buttonWrapper:hover{
+    background-color:#efefef;
+}
+#centerButtonDiv{
+    width:min-content;
+    position: relative;
+    margin:auto;
+    top: 45%;
+}
+#loginButton{
+    width:min-content;
+    text-align: center;
+    text-color: black;
+    color: #363945;
+}
+#signUpButton{
+    width:min-content;
+    text-align: center;
+    text-color: black;
+    color:#3ea9f5;
+}

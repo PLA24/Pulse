@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var map = require('./routes/map');
+var solution = require('./routes/solution');
+var learn = require('./routes/learn');
+var about = require('./routes/about');
+var support = require('./routes/support');
+var pricing = require('./routes/pricing');
 
 var app = express();
 
@@ -26,6 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/map', map);
+app.use('/solution', solution);
+app.use('/learn', learn);
+app.use('/about', about);
+app.use('/support', support);
+app.use('/pricing', pricing);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

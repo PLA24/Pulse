@@ -74,9 +74,7 @@
         .secondary.pointing.menu .toc.item {
             display: none;
         }
-    #customColumn:hover{
-        border: 1px solid #D4D4D5;
-    }
+
         @media only screen and (max-width: 700px) {
             .ui.fixed.menu {
                 display: none !important;
@@ -108,6 +106,31 @@
     <script src="../dist/components/visibility.js"></script>
     <script src="../dist/components/sidebar.js"></script>
     <script src="../dist/components/transition.js"></script>
+    <script>
+        $(document)
+                .ready(function() {
+
+                    // fix menu when passed
+                    $('.masthead')
+                            .visibility({
+                                once: false,
+                                onBottomPassed: function() {
+                                    $('.fixed.menu').transition('fade in');
+                                },
+                                onBottomPassedReverse: function() {
+                                    $('.fixed.menu').transition('fade out');
+                                }
+                            })
+                    ;
+
+                    // create sidebar and attach to menu open
+                    $('.ui.sidebar')
+                            .sidebar('attach events', '.toc.item')
+                    ;
+
+                })
+        ;
+    </script>
 </head>
 
 <body class="pushable">
@@ -200,50 +223,28 @@
 <div class="pusher">
     <div class="ui inverted vertical masthead center aligned segment">
         <div class="ui text container">
-            <h1 class="ui inverted header"> Imagine-a-Car-Tracking-Platform</h1>
-            <h2>Track cars wherever they are, whenever you want.</h2><br>
-            <div class="ui huge primary button">Watch video<i class="right arrow icon"></i></div>
+            <h1 class="ui inverted header">Prices</h1>
+            <h2>Choose the package that fits your requirement.</h2><br>
+            <strong><em><u>WE WILL UPDATE THE PRICES AFTER THE LAST SPRINT! </u></em></strong>
         </div>
     </div>
-
-    <div class="ui vertical stripe segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="eight wide column">
-                    <h3 class="ui header" style="color: #00AEEF">Pulse</h3>
-                    <p>A car tracking platform that monitors traffic by detecting every car on road.......</p>
-                </div>
-                <div class="six wide right floated column">
-                    <img src="/images/banner.jpg" class="ui large bordered rounded image">
-                </div>
-            </div>
-            <div class="row">
-                <div class="center aligned column">
-                    <a href="/solution">
-                    <div class="ui huge primary button">See our solution<i class="right arrow icon"></i></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="ui vertical stripe quote segment">
         <div class="ui equal width stackable internally celled grid">
             <div class="center aligned row">
-                <div class="column" style="background-color: white;" id="customColumn">
-                    <h3 style="color: #00AEEF;">Live Car Detection.</h3>
+                <div class="column" style="background-color: #2185d0;">
+                    <h3 style="color: white;">Lorem ipsum</h3>
                     <p style="color: #363945;">Track cars live on every road in your region. </p>
                 </div>
-                <div class="column" style="background-color: #00AEEF;" id="customColumn">
-                    <h3 style="color: white;">Lorem ipsum.</h3>
-                    <p style="color: #363945;">Track cars live on every road in your region. </p>
+                <div class="column" style="background-color: #00AEEF;">
+                    <h3 style="color: white;">Lorem ipsum</h3>
+                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
-                <div class="column" style="background-color: white;" id="customColumn">
-                    <h3 style="color: #00AEEF;">Lorem ipsum.</h3>
-                    <p style="color: #363945;">Track cars live on every road in your region. </p>
+                <div class="column" style="background-color: #2185d0;">
+                    <h3 style="color: white;">Lorem ipsum</h3>
+                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
-                <div class="column" style="background-color: #00AEEF;" id="customColumn">
+                <div class="column" style="background-color: #00AEEF;">
                     <h3 style="color: white;">Lorem ipsum</h3>
                     <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
@@ -251,66 +252,39 @@
         </div>
     </div>
 
-    <div class="ui vertical stripe quote segment">
-            <div class="ui sizer vertical segment" id="ourTeamContainer">
-                <div class="ui huge header" style="text-align: center; color: #00AEEF"></div>
-                <p></p>
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                </div>
+                <div class="six wide right floated column">
+
+                </div>
             </div>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ui vertical stripe quote segment">
         <div class="ui equal width stackable internally celled grid">
             <div class="center aligned row">
                 <div class="column">
-                    <i class="user icon" style="font-size: 5em; color: #2185d0"></i>
-                    <h3 style="font-size: 20px; color: #2185d0">"There will be almost no traffic jams in the year 2025. Thanks to the Pulse car tracking platform."</h3>
-                    <p style="color: #2185d0"><em><u>Tim Klemink City Councilor of Utrecht</u></em></p>
+                    <i class="user icon" style="font-size: 5em"></i>
+                    <h3 style="font-size: 20px;">"There will be almost no traffic jams in the year 2025. Thanks to the Pulse car tracking platform."</h3>
+                    <p><em><u>Tim Klemink City Councilor of Utrecht</u></em></p>
                 </div>
                 <div class="column">
-                    <i class="user icon" style="font-size: 5em; color: #2185d0"></i>
-                    <h3 style="font-size: 20px; color: #2185d0">"It's amazing how we can gather information about all the cars in our region. This way we can analyse a lot and start improving traffic."</h3>
-                    <p style="color: #2185d0">
-                        <em>Eberhard van der Laan mayor of Amsterdam.</em>
+                    <i class="user icon" style="font-size: 5em"></i>
+                    <h3 style="font-size: 20px;">"It's amazing how we can gather information about all the cars in our region. This way we can analyse a lot and start improving traffic."</h3>
+                    <p>
+                        <em><u>Eberhard van der Laan mayor of Amsterdam.</u></em>
                     </p>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="ui vertical stripe segment">
-
-    <div class="ui vertical stripe quote segment">
-    <div class="ui equal width stackable internally celled grid">
-            <div class="ui sizer vertical segment" id="ourTeamContainer">
-                <div class="ui huge header" style="text-align: center; color: #00AEEF">Our Team</div>
-                <p></p>
-            </div>
-            <div class="center aligned row">
-                <div class="column">
-                    <i class="user icon" style="font-size: 5em"></i>
-                    <h2 style="color: #00AEEF;">Mourad Abouchen</h2>
-                    <p style="color: #00AEEF;">Co-owner</p>
-                </div>
-                <div class="column">
-                    <i class="user icon" style="font-size: 5em"></i>
-                    <h2 style="color: #00AEEF;">Souhail Faiz</h2>
-                    <p style="color: #00AEEF;">Co-owner</p>
-                </div>
-                <div class="column">
-                    <i class="user icon" style="font-size: 5em"></i>
-                    <h2 style="color: #00AEEF;">Raphael Bunck</h2>
-                    <p style="color: #00AEEF;">Co-owner</p>
-                </div>
-                <div class="column">
-                    <i class="user icon" style="font-size: 5em"></i>
-                    <h2 style="color: #00AEEF;">Stijn Klopper</h2>
-                    <p style="color: #00AEEF;">Co-owner</p>
-                </div>
-                <div class="column">
-                    <i class="user icon" style="font-size: 5em"></i>
-                    <h2 style="color: #00AEEF;">Ziggy Veerman</h2>
-                    <p style="color: #00AEEF;">Co-owner</p>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 
     <div class="ui inverted vertical footer segment" style="background-color: #2185d0;">
