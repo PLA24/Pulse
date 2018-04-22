@@ -2,303 +2,238 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/homepage.css'/>
-    <link rel="stylesheet" href="/semantic/dist/semantic.css"/>
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <title>{{title}}</title>
+  <link rel='stylesheet' href='/stylesheets/homepage.css' />
+  <link rel="stylesheet" href="/semantic/dist/semantic.css" />
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 </head>
+
 <head>
-    <!-- Standard Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <!-- Site Properties -->
-    <title>Homepage - Semantic</title>
-    <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
+  <!-- Site Properties -->
+  <title>Homepage - Semantic</title>
+  <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
 
-    <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
 
-    <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/transition.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="../dist/components/transition.css">
 
-    <style type="text/css">
-        .ui.inverted.segment, .ui.primary.inverted.segment{
-            background-color: #00AEEF;
-        }
-        .hidden.menu {
-            display: none;
-        }
-        .masthead.segment {
-            min-height: 700px;
-            padding: 1em 0em;
-        }
-        .masthead .logo.item img {
-            margin-right: 1em;
-        }
-        .masthead .ui.menu .ui.button {
-            margin-left: 0.5em;
-        }
-        .masthead h1.ui.header {
-            margin-top: 3em;
-            margin-bottom: 0em;
-            font-size: 4em;
-            font-weight: normal;
-        }
-        .masthead h2 {
-            font-size: 1.7em;
-            font-weight: normal;
-        }
+  <style type="text/css">
+    .ui.inverted.segment,
+    .ui.primary.inverted.segment {
+      background-color: #00AEEF;
+    }
 
-        .ui.vertical.stripe {
-            padding: 8em 0em;
-        }
-        .ui.vertical.stripe h3 {
-            font-size: 2em;
-        }
-        .ui.vertical.stripe .button + h3,
-        .ui.vertical.stripe p + h3 {
-            margin-top: 3em;
-        }
-        .ui.vertical.stripe .floated.image {
-            clear: both;
-        }
-        .ui.vertical.stripe p {
-            font-size: 1.33em;
-        }
-        .ui.vertical.stripe .horizontal.divider {
-            margin: 3em 0em;
-        }
+    .hidden.menu {
+      display: none;
+    }
 
-        .quote.stripe.segment {
-            padding: 0em;
-        }
-        .quote.stripe.segment .grid .column {
-            padding-top: 5em;
-            padding-bottom: 5em;
-        }
+    .masthead.segment {
+      min-height: 700px;
+      padding: 1em 0em;
+    }
 
-        .footer.segment {
-            padding: 5em 0em;
-        }
+    .masthead .logo.item img {
+      margin-right: 1em;
+    }
 
-        .secondary.pointing.menu .toc.item {
-            display: none;
-        }
+    .masthead .ui.menu .ui.button {
+      margin-left: 0.5em;
+    }
 
-        @media only screen and (max-width: 700px) {
-            .ui.fixed.menu {
-                display: none !important;
-            }
-            .secondary.pointing.menu .item,
-            .secondary.pointing.menu .menu {
-                display: none;
-            }
-            .secondary.pointing.menu .toc.item {
-                display: block;
-            }
-            .masthead.segment {
-                min-height: 350px;
-            }
-            .masthead h1.ui.header {
-                font-size: 2em;
-                margin-top: 1.5em;
-            }
-            .masthead h2 {
-                margin-top: 0.5em;
-                font-size: 1.5em;
-            }
-        }
-    </style>
-    <script src="assets/library/jquery.min.js"></script>
-    <script src="../dist/components/visibility.js"></script>
-    <script src="../dist/components/sidebar.js"></script>
-    <script src="../dist/components/transition.js"></script>
+    .masthead h1.ui.header {
+      margin-top: 3em;
+      margin-bottom: 0em;
+      font-size: 4em;
+      font-weight: normal;
+    }
+
+    .masthead h2 {
+      font-size: 1.7em;
+      font-weight: normal;
+    }
+
+    .ui.vertical.stripe {
+      padding: 8em 0em;
+    }
+
+    .ui.vertical.stripe h3 {
+      font-size: 2em;
+    }
+
+    .ui.vertical.stripe .button+h3,
+    .ui.vertical.stripe p+h3 {
+      margin-top: 3em;
+    }
+
+    .ui.vertical.stripe .floated.image {
+      clear: both;
+    }
+
+    .ui.vertical.stripe p {
+      font-size: 1.33em;
+    }
+
+    .ui.vertical.stripe .horizontal.divider {
+      margin: 3em 0em;
+    }
+
+    .quote.stripe.segment {
+      padding: 0em;
+    }
+
+    .quote.stripe.segment .grid .column {
+      padding-top: 5em;
+      padding-bottom: 5em;
+    }
+
+    .footer.segment {
+      padding: 5em 0em;
+    }
+
+    .secondary.pointing.menu .toc.item {
+      display: none;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .ui.fixed.menu {
+        display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: block;
+      }
+      .masthead.segment {
+        min-height: 350px;
+      }
+      .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+      }
+      .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+      }
+    }
+  </style>
+  <script src="assets/library/jquery.min.js"></script>
+  <script src="../dist/components/visibility.js"></script>
+  <script src="../dist/components/sidebar.js"></script>
+  <script src="../dist/components/transition.js"></script>
 </head>
-<body class="pushable">
-<div id="topmenuContainerWrapper">
-    <div id="contentContainerLogo">
-        <img src="/images/pulselogo.png" id="imageInDiv">
-    </div>
-    <div id="contentContainerNav">
-        <div id="navBar">
-            <a href="/">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>Product</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/solution">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>Idea</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/learn">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>Learn</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/about">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>About</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/support">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>Support</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/pricing">
-                <div id="lastNavBarItem">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton" class="no-italics"><strong>Pricing</strong></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div id="rightnavWrapper">
-            <a href="/login">
-                <div id="buttonWrapper">
-                    <div id="centerButtonDiv">
-                        <i id="signUpButton" class="user icon">&nbsp;&nbsp;&nbsp;<strong>Register</strong></i>
-                    </div>
-                </div>
-            </a>
-            <a href="/login" id="loginLink">
-                <div id="buttonWrapper">
-                    <div id="centerButtonDiv">
-                        <i id="loginButton" class="sign in icon">&nbsp;&nbsp;&nbsp;<strong>Login</strong></i>
-                    </div>
-                </div>
-            </a>
 
-        </div>
-        <!-- Om een 2e navbar te maken onder eerste navbar
-        <div id="underNavBar">
-            <a href="" id="testButton">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton">Features</i>
-                    </div>
-                </div>
-            </a>
-            <a href="" id="testButton">
-                <div id="navBarItems">
-                    <div id="centerButtonDiv">
-                        <i id="navBarButton">Features</i>
-                    </div>
-                </div>
-            </a>
-        </div>-->
-    </div>
-</div>
 <!-- Page Contents -->
 <div class="pusher">
-    <div class="ui vertical stripe quote segment">
-        <div class="ui equal width stackable internally celled grid">
-            <div class="center aligned row">
-                <div class="column" style="background-color: #00AEEF;">
-                    <h3 style="color: white;">Solution.</h3>
-                </div>
-            </div>
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column" style="background-color: #00AEEF;">
+          <h3 style="color: white;">Solution.</h3>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="ui vertical stripe segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="eight wide column" style="border-right: 1px solid #00AEEF">
-                    <h3 class="ui header" style="color: #00AEEF">Problem</h3>
-                    <p>In Nederland maakt bijna elke persoon gebruik van het verkeer. Daarvan zijn er heel veel mensen die gebruik maken van auto’s. Ondanks de goede infrastructuur in Nederland vinden er verschillende problemen plaats die een negatief gevolg hebben op het verkeer.</p><br>
-                    <p>Neem als voorbeeld:
-                    <li>Auto-ongelukken</li>
-                    <li>Files</li>
-                    <li>Slechte wegenstructuur</li>
-                    <li>Negatieve klimaat</li>
-                    <li>CO2-uitstoot</li>
-                    <br><br>
-                    <p>De bovenstaande problemen vinden dagelijks plaats in het verkeer, daarom is het handig om het allemaal te monitoren, zodat er verschillende oplossingen bedacht kunnen worden om het probleem op te lossen.</p>
-                    <br><p>Ons product geeft de mogelijkheid om de bovenstaande problemen op te lossen. Hieronder leggen we tot in het detail uit wat het product inhoudt.</p>
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column" style="border-right: 1px solid #00AEEF">
+          <h3 class="ui header" style="color: #00AEEF">Problem</h3>
+          <p>In Nederland maakt bijna elke persoon gebruik van het verkeer. Daarvan zijn er heel veel mensen die gebruik maken van auto’s. Ondanks de goede infrastructuur in Nederland vinden er verschillende problemen plaats die een negatief gevolg hebben
+            op het verkeer.</p><br>
+          <p>Neem als voorbeeld:
+            <li>Auto-ongelukken</li>
+            <li>Files</li>
+            <li>Slechte wegenstructuur</li>
+            <li>Negatieve klimaat</li>
+            <li>CO2-uitstoot</li>
+            <br><br>
+            <p>De bovenstaande problemen vinden dagelijks plaats in het verkeer, daarom is het handig om het allemaal te monitoren, zodat er verschillende oplossingen bedacht kunnen worden om het probleem op te lossen.</p>
+            <br>
+            <p>Ons product geeft de mogelijkheid om de bovenstaande problemen op te lossen. Hieronder leggen we tot in het detail uit wat het product inhoudt.</p>
 
-                </div>
-                <div class="six wide right floated column">
-                </div>
-            </div>
         </div>
-    </div>
-
-    <div class="ui vertical stripe segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="six wide right floated column">
-                </div>
-                <div class="eight wide column" style="border-left: 1px solid #00AEEF">
-                    <h3 class="ui header" style="color: #00AEEF">Solution</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis</p>
-                </div>
-            </div>
+        <div class="six wide right floated column">
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="ui vertical stripe quote segment">
-        <div class="ui equal width stackable internally celled grid">
-            <div class="center aligned row">
-                <div class="column" style="background-color: #00AEEF;">
-                    <p style="color: white;">Want to know more about us? <a href="/about" style="color: white"><u>Click here.</u></a></p>
-                </div>
-            </div>
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="six wide right floated column">
         </div>
+        <div class="eight wide column" style="border-left: 1px solid #00AEEF">
+          <h3 class="ui header" style="color: #00AEEF">Solution</h3>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer
+            adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+            et magnis dis</p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="ui inverted vertical footer segment" style="background-color: #2185d0;">
-        <div class="ui container">
-            <div class="ui stackable inverted divided equal height stackable grid">
-                <div class="three wide column">
-                    <img src="/images/pulselogo.png" class="ui avatar image" style="width: 150px; height:150px; margin: -30px 0px 0px -100px">
-                </div>
-                <div class="three wide column">
-                    <div class="ui inverted link list" style="color: white;">
-                        <a href="/" class="item">Product</a>
-                        <a href="/solution" class="item">Idea</a>
-                        <a href="/learn" class="item">Learn</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <div class="ui inverted link list">
-                        <a href="/about" class="item">About</a>
-                        <a href="/support" class="item">Support</a>
-                        <a href="/pricing" class="item">Pricing</a>
-                    </div>
-                </div>
-            </div>
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column" style="background-color: #00AEEF;">
+          <p style="color: white;">Want to know more about us? <a href="/about" style="color: white"><u>Click here.</u></a></p>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div class="ui inverted vertical footer segment" style="background-color: #2185d0;">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <img src="/images/pulselogo.png" class="ui avatar image" style="width: 150px; height:150px; margin: -30px 0px 0px -100px">
+        </div>
+        <div class="three wide column">
+          <div class="ui inverted link list" style="color: white;">
+            <a href="/" class="item">Product</a>
+            <a href="/solution" class="item">Idea</a>
+            <a href="/learn" class="item">Learn</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <div class="ui inverted link list">
+            <a href="/about" class="item">About</a>
+            <a href="/support" class="item">Support</a>
+            <a href="/pricing" class="item">Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 
 
 </body>
+
 </html>

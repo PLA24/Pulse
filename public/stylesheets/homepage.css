@@ -1,6 +1,12 @@
 .no-italics {
     font-style: normal;
 }
+
+#banner{
+background-image: url("/images/homepagebanner.jpg");
+background-size: cover;
+}
+
 #topmenuContainerWrapper{
     width: 100%;
     height:20%;
