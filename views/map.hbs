@@ -20,12 +20,10 @@
         <i class="wrench icon large"></i>
     </a>
 </div>
-
-
-
 <div id="map" class="map">
     <div id="popup"></div>
 </div>
+
 <script>
     var map = new ol.Map({
         layers: [
@@ -36,10 +34,9 @@
             //planet mosaic tile layer
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2018_02_mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
+                    url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2017_08_mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
                 })
             }),
-
             //gemeente layer
             vectorGemeenteLayer,
             //pulse icon
