@@ -23,13 +23,15 @@ var style = new ol.style.Style({
 //eigenschappen pulse marker
 var iconFeature = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
-  name: 'Pulse#1',
+  name: 'Amsterdam HVA BPH',
   population: 4000,
   rainfall: 500
+
 });
 
 var iconStyle = new ol.style.Style({
   image: new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
+    scale: 0.5,
     anchor: [0.5, 46],
     anchorXUnits: 'fraction',
     anchorYUnits: 'pixels',
