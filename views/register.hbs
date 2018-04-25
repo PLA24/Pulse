@@ -82,18 +82,19 @@
           </div>
         </div>
         <div class="field">
-            <div class="ui fluid search selection dropdown">
-                <input type="hidden" name="Township"><i class="building icon"></i>
+            <div class="ui fluid search selection dropdown" id="ddTownship">
+              <i class="building icon"></i>
+                <input type="hidden" name="township">
                 <i class="dropdown icon"></i>
                 <div class="default text">Select township</div>
                 <div class="menu">
-                    <div class="item" data-value="AD">Amsterdam</div>
-                    <div class="item" data-value="RD">Rotterdam</div>
-                    <div class="item" value="DH">Den Haag</div>
-                    <div class="item" value="UT">Utrecht</div>
-                    <div class="item" value="EH">Eindhoven</div>
-                    <div class="item" data-value="TB">Tilburg</div>
-                    <div class="item" data-value="AM">Almere</div>
+                    <div class="item" data-value="Amsterdam">Amsterdam</div>
+                    <div class="item" data-value="Rotterdam">Rotterdam</div>
+                    <div class="item" value="Den Haag">Den Haag</div>
+                    <div class="item" value="Utrecht">Utrecht</div>
+                    <div class="item" value="Eindhoven">Eindhoven</div>
+                    <div class="item" data-value="Tilburg">Tilburg</div>
+                    <div class="item" data-value="Almere">Almere</div>
                 </div>
                 </div>
           </div>
@@ -108,9 +109,7 @@
 </div>
 
 <script>
-    $('.ui.dropdown')
-  .dropdown()
-;
+    $('#ddTownship').dropdown('get text');
 </script>
 
 

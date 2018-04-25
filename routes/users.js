@@ -49,8 +49,7 @@ router.post('/register', function(req, res) {
   req.checkBody('password').notEmpty().withMessage('password is required');
   req.checkBody('repassword').notEmpty().withMessage('password confirmation is required');
   req.checkBody('repassword', 'Passwords do not match').equals(req.body.password);
-  //  req.checkBody('township').notEmpty().withMessage('township must be selected');
-  //console.log(township);
+  req.checkBody('township').notEmpty().withMessage('township must be selected');
 
 
   var errors = req.validationErrors();
@@ -67,7 +66,7 @@ router.post('/register', function(req, res) {
         username: username,
         email: email,
         password: password,
-        township: 'amsterdamwest'
+        township: township
 
       });
 
