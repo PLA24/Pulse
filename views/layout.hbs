@@ -10,9 +10,17 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <script src="/semantic/dist/semantic.min.js"></script>
+    <style>
+        a.item:first-letter {
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
 <div id="sidebar" class="ui left visible vertical inverted sidebar labeled icon menu">
+    <a class="item">
+        {{currentUser}}
+    </a>
     <a class="item" href="/">
         <i class="home icon"></i>
         Home
