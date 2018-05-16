@@ -23,12 +23,6 @@ var UserSchema = mongoose.Schema({
   township: {
     type: String
 
-  },
-  resetPasswordToken: {
-    type: String
-  },
-  resetPasswordExpires: {
-    type: String
   }
 });
 

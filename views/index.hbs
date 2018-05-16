@@ -1,5 +1,271 @@
-<center><h1 class="ui header">Dashboard</h1></center>
+<center><h1 class="ui header" id="titel"><i class="chart bar icon"></i>Dashboard</h1></center>
+
+<style>
+#titel {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #434343;
+  color: white;
+}
+</style>
+
 <body>
+
+  <script>
+    function makeBar(name, [a1, a2, a3, a4, a5, a6], [v1, v2, v3, v4, v5, v6], [m1, m2, m3, m4, m5, m6], [b1, b2, b3, b4, b5, b6], [aw1, aw2, aw3, aw4, aw5, aw6]){
+          new Chart(name, {
+                  type: 'bar',
+                  data: {
+                    labels:["00:00 - 04:00", "04:00 - 08:00", "08:00 - 12:00", "12:00 - 16:00", "16:00 - 20:00", "20:00 - 00:00"],
+                    datasets:[{
+                      label:"Auto's",
+                      data:[a1, a2, a3, a4, a5, a6],
+                      backgroundColor: "#6666ff"
+                    }, {
+                      label:"Vrachtwagens",
+                      data:[v1, v2, v3, v4, v5, v6],
+                      backgroundColor: "#ff66ff"
+                    }, {
+                      label:"Motoren",
+                      data:[m1, m2, m3, m4, m5, m6],
+                      backgroundColor: "6666ff"
+                    }, {
+                      label:"Bromfietsen",
+                      data:[b1, b2, b3, b4, b5, b6],
+                      backgroundColor: "#66ff66"
+                    }, {
+                      label:"Aanhangwagens",
+                      data:[aw1, aw2, aw3, aw4, aw5, aw6],
+                      backgroundColor: "#ff6666"
+                    }]
+                  },
+                  options:{
+                    legend:{
+                      position:'bottom'
+                    }
+                  }
+              });
+        }
+  
+  </script>
+
+<div style="margin-left: 10%; margin-right:5%">
+
+  
+    <div class="ui segment">
+      <h2 class="ui center aligned header">
+        <div class="content">
+          <i class="circle icon" style="color:red"></i>LIVE
+            <div class="sub header">
+              <div class="content">
+                Live counts per
+              <div class="ui inline dropdown" id="liveCount">
+                <div class="text">day</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="active item" data-text="day">Day</div>
+                  <div class="item" data-text="week">Week</div>
+                  <div class="item" data-text="month">Month</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </h2>
+
+      <div class="ui five statistics">
+        <div class="statistic">
+          <div class="value">
+            2,204
+          </div>
+          <div class="label">
+            Auto's
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            3,322
+          </div>
+          <div class="label">
+            Vrachtwagens
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            22
+          </div>
+          <div class="label">
+            Motoren
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            2,204
+          </div>
+          <div class="label">
+            Bromfietsen
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            2,204
+          </div>
+          <div class="label">
+            Aanhangwagens
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="ui horizontal segments">
+
+    <div class="ui segment" style="width:33%">
+      <h2 class="ui center aligned header">
+        <div class="content">
+          Aantal voertuigen
+          <div class="sub header">In het laatste uur per gemeente</div>
+        </div>
+      </h2>
+      <canvas id="myPie" width="400" height="400"></canvas>
+        <script>
+          var myPieChart = new Chart(myPie,{
+            type: 'pie',
+            data: {
+              labels:['Amsterdam-West', 'Amsterdam-Noord', 'Amsterdam-Zuid'],
+              datasets:[{data:[20, 40, 60],
+              backgroundColor:['#ff6666', '#6666ff', '#66ff66'] }]
+            },
+            options: {
+              legend:{
+                position:'bottom'
+              }
+            }
+          });
+        </script>  
+    </div>
+
+    <div class="ui segment" style="width:66%">
+      <h2 class="ui center aligned header">
+        <div class="content">
+          Alle voertuigen
+          <div class="sub header">in de laatste 24 uur</div>
+        </div>
+      </h2>
+      <canvas id="myBar"></canvas>
+      <script>
+        makeBar(myBar, [78, 64, 144, 132, 178, 103], [67, 94, 76, 65, 34, 28], [12, 18, 23, 46, 55, 19], [3, 46, 83, 86, 48, 23], [12, 24, 36, 48, 40, 45])
+      </script>
+    </div>
+    
+  </div>
+
+<div class="ui horizontal segments">
+  <div class="ui segment" style="width:66%">
+    <h2 class="ui center aligned header">
+        <div class="content">
+          Alle voertuigen per gemeente
+          <div class="sub header">In de laatste 5 tellingen</div>
+        </div>
+      </h2>
+
+    <div class="ui selection dropdown" id="township">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="text">Amsterdam-West</div>
+      <div class="menu">
+        <div class="item active selected" data-value="0">Amsterdam-West</div>
+        <div class="item" data-value="1">Amsterdam-Zuid</div>
+      </div>
+    </div>
+
+    <button class="ui button" onclick="setBarTownship();">Select</button>
+
+      <canvas id="myBar1"></canvas>
+      <script>
+        function setBarTownship(){
+          var townshipNr = $('#township').dropdown('get value');
+          console.log(townshipNr);
+        switch (townshipNr) {
+          case 0:
+              document.getElementById('myBar1').innerHTML = Chart(myBar1, {
+                  type: 'bar',
+                  data: {
+                    labels:["12:00", "13:00", "14:00", "15:00", "16:00"],
+                    datasets:[{
+                      label:"Auto's",
+                      data:[100, 123, 134, 145, 170],
+                      backgroundColor: "#bf6788"
+                    }, {
+                      label:"Vrachtwagens",
+                      data:[120, 89, 89, 67, 45],
+                      backgroundColor: "#ffffff"
+                    }]
+                  },
+                  options:{
+                    legend:{
+                      position:'bottom'
+                    }
+                  }
+              });
+              break;
+          case 1: 
+              new Chart(myBar1, {
+                  type: 'bar',
+                  data: {
+                    labels:["12:00", "13:00", "14:00", "15:00", "16:00"],
+                    datasets:[{
+                      label:"Auto's",
+                      data:[100, 123, 134, 145, 170],
+                      backgroundColor: "#bf76gg"
+                    }, {
+                      label:"Vrachtwagens",
+                      data:[120, 89, 89, 67, 20],
+                      backgroundColor: "#666666"
+                    }]
+                  },
+                  options:{
+                    legend:{
+                      position:'bottom'
+                    }
+                  }
+              });
+              break;    
+        }
+        };
+      </script>
+  </div>
+
+  <div class="ui segment" style="width:33%">
+      <h2 class="ui center aligned header">
+        <div class="content">
+          Type voertuigen
+          <div class="sub header">in het laatste uur</div>
+        </div>
+      </h2>
+      <canvas id="myPie2" width="400" height="400"></canvas>
+        <script>
+          var myPieChart = new Chart(myPie2,{
+            type: 'doughnut',
+            data: {
+              labels:['Elektrisch', 'Benzine', 'Diesel', 'Hybride'],
+              datasets:[{data:[34, 46, 54, 44],
+              backgroundColor:['#ff6666', '#6666ff', '#66ff66', '#ff66ff'] }]
+            },
+            options: {
+              legend:{
+                position:'bottom'
+              }
+            }
+          });
+        </script>  
+    </div>
+  </div>  
+
+</div>
+
 </body>
-<script type="text/javascript">
+<script>
+  $('#township').dropdown('get text');
+  
+  $('#liveCount').dropdown('get text');
 </script>
