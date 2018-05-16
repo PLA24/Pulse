@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+
 /* GET home page. */
 router.get('/', ensureAuthenticated,  function(req, res) {
-  res.render('index', {title: "Pulse", currentUser: req.user.username});
+  res.render('index', { title: 'Pulse' });
 });
 
 function ensureAuthenticated(req, res, next){
@@ -12,6 +13,7 @@ function ensureAuthenticated(req, res, next){
       req.flash('error_msg', 'You are not logged in');
       res.redirect('/homepage');
   }
+
 }
 
 module.exports = router;
