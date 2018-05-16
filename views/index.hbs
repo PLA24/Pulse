@@ -1,4 +1,13 @@
-<center><h1 class="ui header">Dashboard</h1></center>
+<center><h1 class="ui header" id="titel"><i class="chart bar icon"></i>Dashboard</h1></center>
+
+<style>
+#titel {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #434343;
+  color: white;
+}
+</style>
 
 <body>
 
@@ -120,7 +129,7 @@
       <canvas id="myPie" width="400" height="400"></canvas>
         <script>
           var myPieChart = new Chart(myPie,{
-            type: 'doughnut',
+            type: 'pie',
             data: {
               labels:['Amsterdam-West', 'Amsterdam-Noord', 'Amsterdam-Zuid'],
               datasets:[{data:[20, 40, 60],
@@ -162,16 +171,14 @@
     <div class="ui selection dropdown" id="township">
       <input type="hidden" name="gender">
       <i class="dropdown icon"></i>
-      <div class="default text">Township</div>
+      <div class="text">Amsterdam-West</div>
       <div class="menu">
-        <div class="item" data-value="0">Amsterdam-West</div>
+        <div class="item active selected" data-value="0">Amsterdam-West</div>
         <div class="item" data-value="1">Amsterdam-Zuid</div>
       </div>
     </div>
 
-    <button class="ui button" onclick="setBarTownship();">
-        Select
-    </button>
+    <button class="ui button" onclick="setBarTownship();">Select</button>
 
       <canvas id="myBar1"></canvas>
       <script>
