@@ -10,6 +10,7 @@ var flash = require('express-flash');
 var session = require('express-session');
 var passport = require('passport');
 var index = require('./routes/index');
+var settings = require('./routes/settings');
 var users = require('./routes/users');
 var map = require('./routes/map');
 var solution = require('./routes/solution');
@@ -68,6 +69,7 @@ app.use('/support', support);
 app.use('/pricing', pricing);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/settings', settings)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -36,21 +36,43 @@ var popup = new ol.Overlay({
   offset: [0, -50]
 });
 map.addOverlay(popup);
+var sensorname;
+
+
+
 
 // display popup on click
 map.on('click', function(evt) {
+  // $('#test').load('/map #test');
   var feature1 = map.forEachFeatureAtPixel(evt.pixel,
     function(feature1, layer) {
       if (layer == vectorLayer) {
-        name = feature1.get('name');
+        sensorname = feature1.get('name');
         return feature1;
       }
     });
 
-  name = feature1.get('name');
-  console.log(name);
+  sensorname = feature1.get('name');
+  locatieID = feature1.get('locatieID');
+  console.log(sensorname);
+  console.log("locatie ID " + locatieID);
+
+  function update() {
+  $.get("/map/mapdata/" + locatieID, function(data) {
+    $("#test").html(data);
+  });
+  }
+  update();
+
+
+
   if (feature1) {
 
+
+
+    //$('#test').load('/map' + ' #test');
+    sensorname = feature1.get('name');
+    document.getElementById("p1").innerHTML = sensorname;
     //display modal
     $('.ui.modal')
       .modal({
@@ -67,8 +89,12 @@ map.on('click', function(evt) {
     // });
     // $(element).popover('show');
   } else {
+
     $('.ui.modal')
       .modal('hide');
     $(element).popover('destroy');
   }
+
 });
+
+//

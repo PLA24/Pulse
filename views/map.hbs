@@ -8,7 +8,10 @@
   <script src="/javascripts/openlayer.js"></script>
   <link rel="stylesheet" href="/stylesheets/map.css" type="text/css">
 </head>
+
+
 <script type="text/javascript">
+
   //datum
   var today = new Date();
   var dd = today.getDate();
@@ -24,6 +27,8 @@
 
   today = mm + '/' + dd + '/' + yyyy;
 </script>
+
+<script src='../models/map_data' charset="utf-8"></script>
 <body>
   <div class="ui inverted menu" id="topbar">
     <a class="item right floated" href="/settings">
@@ -40,9 +45,7 @@
     <i class="close icon">
   </i>
     <div class="header">
-      <script type="text/javascript">
-        document.write(name);
-      </script>
+      <p id="p1">TEMP NAME</p>
     </div>
     <div class="image content">
       <div class="description">
@@ -50,6 +53,7 @@
           <script type="text/javascript">
             document.write(today);
           </script>
+            <p id="test">TEMP AMOUNT</p>
         </p>
       </div>
       <div class="actions">

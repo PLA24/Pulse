@@ -1,9 +1,14 @@
 var express = require('express');
+
 var router = express.Router();
+
+
+
+
 
 /* GET home page. */
 router.get('/', ensureAuthenticated,  function(req, res) {
-  res.render('index', { title: 'Pulse' });
+  res.render('index', { title: 'Pulse'});
 });
 
 function ensureAuthenticated(req, res, next){
@@ -15,5 +20,10 @@ function ensureAuthenticated(req, res, next){
   }
 
 }
+
+router.get('/mapdata', function(req, res){
+  testnaam = "verbeterd!";
+  console.log(testnaam);
+});
 
 module.exports = router;
