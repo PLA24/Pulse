@@ -21,6 +21,9 @@ var pricing = require('./routes/pricing');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var homepage = require('./routes/homepage');
+var settings = require('./routes/settings');
+var forgot = require('./routes/forgot');
+var reset = require('./routes/reset');
 var app = express();
 
 // view engine setup
@@ -69,7 +72,10 @@ app.use('/support', support);
 app.use('/pricing', pricing);
 app.use('/login', login);
 app.use('/register', register);
-app.use('/settings', settings)
+app.use('/settings', settings);
+app.use('/forgot',forgot);
+app.use('/reset', reset);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
