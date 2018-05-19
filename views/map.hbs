@@ -21,18 +21,66 @@
   if (mm < 10) {
     mm = '0' + mm
   }
-
   today = mm + '/' + dd + '/' + yyyy;
 </script>
+<style>
+    #centerDiv{
+        color:white;
+        align-self: center;
+        margin: 0 auto;
+    }
+</style>
 <body>
   <div class="ui inverted menu" id="topbar">
-    <a class="item right floated" href="/settings">
-        <i class="wrench icon large"></i>
-    </a>
+    <div id="centerDiv">
+        <div class="ui dropdown">
+            <div class="text">Select township...</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item">All</div>
+                <div class="item" id="amsterdam">Amsterdam</div>
+                <div class="item" id="rotterdam"><p>Rotterdam</p></div>
+            </div>
+        </div>
+    </div>
+
   </div>
   <div id="map" class="map" style="z-index: 0"></div>
   <!-- <div id="popup"></div> -->
 </body>
+<script>
+    var cLayer = '';
+    $('.ui.dropdown')
+            .dropdown();
+    
+    $(function(){
+        $('.item').click(function (){
+            cLayer=this.id;
+            storeValue('cLayer', cLayer);
+            location.reload();
+        });
+    });
+
+    function storeValue(key, value) {
+        if (localStorage) {
+            localStorage.setItem(key, value);
+        } else {
+            $.cookies.set(key, value);
+        }
+    }
+
+    function getStoredValue(key) {
+        if (localStorage) {
+            return localStorage.getItem(key);
+        } else {
+            return $.cookies.get(key);
+        }
+    }
+
+
+
+
+</script>
 <script src="/javascripts/openlayerComp.js"></script>
 
 <body>

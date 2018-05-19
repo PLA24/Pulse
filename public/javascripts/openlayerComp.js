@@ -1,5 +1,16 @@
+function currentLayer() {
+    var cuLayer = getStoredValue('cLayer');
+    if(cuLayer == 'amsterdam'){
+      return vectorAmsterdamLayer;
+    }else if(cuLayer == 'rotterdam'){
+      return vectorRotterdamLayer;
+    }else{
+      return vectorGemeenteLayer;
+    }
+}
+
 var map = new ol.Map({
-  layers: [
+    layers: [
     //base layer van openstreet
     new ol.layer.Tile({
       source: new ol.source.OSM()
@@ -10,8 +21,9 @@ var map = new ol.Map({
         url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2017_08_mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
       })
     }),
+
     //gemeente layer
-    vectorGemeenteLayer,
+    currentLayer(),
     //pulse icon
     vectorLayer
   ],
@@ -22,7 +34,7 @@ var map = new ol.Map({
     minZoom: 8,
     maxZoom: 18,
     zoom: 8,
-    extent: [500000, 6750000, 750000, 7000000]
+    exte3nt: [500000, 6750000, 750000, 7000000]
   })
 });
 
@@ -35,8 +47,8 @@ var popup = new ol.Overlay({
   stopEvent: false,
   offset: [0, -50]
 });
-map.addOverlay(popup);
 
+map.addOverlay(popup);
 // display popup on click
 map.on('click', function(evt) {
   var feature1 = map.forEachFeatureAtPixel(evt.pixel,
@@ -72,3 +84,5 @@ map.on('click', function(evt) {
     $(element).popover('destroy');
   }
 });
+
+

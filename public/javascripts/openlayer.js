@@ -50,6 +50,36 @@ var vectorLayer = new ol.layer.Vector({
   source: vectorSource
 });
 
+//amsterdam layer
+var vectorAmsterdamLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        url: '/geojson/amsterdam.geojson',
+        format: new ol.format.GeoJSON()
+
+
+    }),
+    style: function(feature) {
+        style.getText().setText(feature.get('name'));
+        return style;
+
+    }
+});
+
+//rotterdam layer
+var vectorRotterdamLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        url: '/geojson/rotterdam.geojson',
+        format: new ol.format.GeoJSON()
+
+
+    }),
+    style: function(feature) {
+        style.getText().setText(feature.get('name'));
+        return style;
+
+    }
+});
+
 //gemeente layer
 var vectorGemeenteLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
