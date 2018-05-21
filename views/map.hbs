@@ -43,9 +43,9 @@
             <div class="text">Select township...</div>
             <i class="dropdown icon"></i>
             <div class="menu">
-                <div class="item">All</div>
-                <div class="item" id="amsterdam">Amsterdam</div>
-                <div class="item" id="rotterdam"><p>Rotterdam</p></div>
+                <div class="item map">All</div>
+                <div class="item map" id="amsterdam">Amsterdam</div>
+                <div class="item map" id="rotterdam"><p>Rotterdam</p></div>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
             .dropdown();
     
     $(function(){
-        $('.item').click(function (){
+        $('.item.map').click(function (){
             cLayer=this.id;
             storeValue('cLayer', cLayer);
             location.reload();

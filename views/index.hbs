@@ -12,12 +12,6 @@
 
 <body>
 
-
-
-  </script>
-
-
-
   <div style="margin-left: 10%; margin-right:5%">
 
 
@@ -32,9 +26,9 @@
                 <div class="text">day</div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <div class="active item" data-text="day">Day</div>
-                  <div class="item" data-text="week">Week</div>
-                  <div class="item" data-text="month">Month</div>
+                  <div class="active item" data-text="day" id="day">Day</div>
+                  <div class="item" data-text="week" id="week">Week</div>
+                  <div class="item" data-text="month" id="month">Month</div>
                 </div>
               </div>
             </div>
@@ -154,6 +148,7 @@
           });
         </script>
 
+          //alle voertuigen
         <script type="text/javascript">
         $.get("/graphdata01", function(data) {
           TopbarChart.data.datasets[0].data[0] = data.personenauto;
@@ -328,12 +323,25 @@
 
   </div>
 
-</body>
-<script>
-  //$('#township').dropdown('get text');
-  $('#liveCount').dropdown('get text');
-  
-});
-  //console.log($('#liveCount').dropdown('get text'));
+  <script>
+      $('.ui.inline.dropdown')
+              .dropdown();
 
-</script>
+      $(function(){
+          $('.item').click(function (){
+              var currentPeriod = this.id;
+              console.log(currentPeriod);
+
+              if(currentPeriod == "week"){
+                  console.log("hier moet data uit database per week worden opgehaald")
+              }else if(currentPeriod == "month"){
+                  console.log("hier moet data uit database per maand worden opgehaald")
+              }else {
+                  console.log("hier moet data uit database per dag worden opgehaald, hou in rekening dat standaard" +
+                          "op dag staat dus voor het click gebeuren moet de data van dag al worden opgehaald." +
+                          "Als daarna op week/maand wordt geklikt en vervolgens weer op dag dan voert het deze code uit")
+              }
+          });
+      });
+  </script>
+</body>

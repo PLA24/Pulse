@@ -657,7 +657,7 @@ router.get('/livecountweek', function(req, res) {
     })
   })
 
-})
+});
 
 router.get('/fueldata', function(req, res) {
   var fuel = {};
