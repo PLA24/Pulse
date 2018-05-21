@@ -112,10 +112,6 @@ var vectorGemeenteLayer = new ol.layer.Vector({
     return style;
 
   }
-<<<<<<< HEAD
-});
-=======
 });
 
 console.log(name);
->>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749

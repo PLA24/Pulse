@@ -47,14 +47,11 @@ var popup = new ol.Overlay({
   stopEvent: false,
   offset: [0, -50]
 });
-<<<<<<< HEAD
-=======
+
 map.addOverlay(popup);
 var sensorname;
 
 testprint = 0;
-
->>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749
 
 map.addOverlay(popup);
 // display popup on click
@@ -121,9 +118,3 @@ map.on('click', function(evt) {
   }
 
 });
-
-<<<<<<< HEAD
-
-=======
-//
->>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749
