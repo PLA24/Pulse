@@ -8,7 +8,10 @@
   <script src="/javascripts/openlayer.js"></script>
   <link rel="stylesheet" href="/stylesheets/map.css" type="text/css">
 </head>
+
+
 <script type="text/javascript">
+
   //datum
   var today = new Date();
   var dd = today.getDate();
@@ -23,6 +26,7 @@
   }
   today = mm + '/' + dd + '/' + yyyy;
 </script>
+<<<<<<< HEAD
 <style>
     #centerDiv{
         color:white;
@@ -30,6 +34,10 @@
         margin: 0 auto;
     }
 </style>
+=======
+
+<script src='../models/map_data' charset="utf-8"></script>
+>>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749
 <body>
   <div class="ui inverted menu" id="topbar">
     <div id="centerDiv">
@@ -94,15 +102,55 @@
     </div>
     <div class="image content">
       <div class="description">
-        <p>Amount of cars during
-          <script type="text/javascript">
-            document.write(today);
-          </script>
-        </p>
+        <div class="content">
+          <i class="circle icon" style="color:red"></i>LIVE
+            <div class="sub header">
+              <div class="content">
+                Total amount of vehicles during
+                  <script type="text/javascript">
+                    document.write(today + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;");
+                  </script>
+                    <p style="display:inline" id="test"><b>TEMP AMOUNT</b></p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="chartdiv">
+          <canvas id="line-chart" width="600" height="350"></canvas>
+        </div>
+        <script type="text/javascript">
+
+      var DataChart = new Chart(document.getElementById("line-chart"), {
+      type: 'line',
+      data: {
+        labels: [0 + " uur",6 + " uur",12 + " uur",18 + " uur",24 + " uur"],
+        datasets: [{
+            data: [0, 300, 400, 500],
+            label: "aantal auto's per 6 uur",
+            borderColor: "#3e95cd",
+            fill: true
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text:''
+        }
+      }
+      });
+        </script>
+        <style media="screen">
+          .chartdiv{
+            max-width: 700px;
+          }
+        </style>
       </div>
       <div class="actions">
       </div>
     </div>
+
   </div>
 </body>
 </html>

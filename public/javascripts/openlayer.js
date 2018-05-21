@@ -20,12 +20,20 @@ var style = new ol.style.Style({
   })
 });
 
-//eigenschappen pulse marker
+//eigenschappen pulse markers
 var iconFeature = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
   name: 'Amsterdam HVA BPH',
-  population: 4000,
-  rainfall: 500
+  locatieID: 1
+
+
+});
+
+var iconFeature2 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.fromLonLat([7.908942, 52.359899])),
+  name: 'Rotterdam',
+  locatieID: 2
+
 
 });
 
@@ -39,11 +47,22 @@ var iconStyle = new ol.style.Style({
   }))
 });
 
+var iconStyle2 = new ol.style.Style({
+  image: new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
+    scale: 0.5,
+    anchor: [0.5, 46],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    src: '/images/pulse_icon.png'
+  }))
+});
+
 iconFeature.setStyle(iconStyle);
+iconFeature2.setStyle(iconStyle2);
 
 //pulse marker
 var vectorSource = new ol.source.Vector({
-  features: [iconFeature]
+  features: [iconFeature, iconFeature2]
 });
 
 var vectorLayer = new ol.layer.Vector({
@@ -93,4 +112,10 @@ var vectorGemeenteLayer = new ol.layer.Vector({
     return style;
 
   }
+<<<<<<< HEAD
 });
+=======
+});
+
+console.log(name);
+>>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749

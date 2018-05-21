@@ -47,22 +47,57 @@ var popup = new ol.Overlay({
   stopEvent: false,
   offset: [0, -50]
 });
+<<<<<<< HEAD
+=======
+map.addOverlay(popup);
+var sensorname;
+
+testprint = 0;
+
+>>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749
 
 map.addOverlay(popup);
 // display popup on click
 map.on('click', function(evt) {
+  // $('#test').load('/map #test');
   var feature1 = map.forEachFeatureAtPixel(evt.pixel,
     function(feature1, layer) {
       if (layer == vectorLayer) {
-        name = feature1.get('name');
+        sensorname = feature1.get('name');
         return feature1;
       }
     });
 
-  name = feature1.get('name');
-  console.log(name);
+  sensorname = feature1.get('name');
+  locatieID = feature1.get('locatieID');
+  console.log(sensorname);
+  console.log("locatie ID " + locatieID);
+
+  function update() {
+  $.get("/map/mapdata/" + locatieID, function(data) {
+    $("#test").html(data.AmountTotal);
+    console.log("hallooo" + testprint)
+    DataChart.data.datasets[0].data[0] = 0;
+    DataChart.data.datasets[0].data[1] = data.time01;
+    DataChart.data.datasets[0].data[2] = data.time02;
+    DataChart.data.datasets[0].data[3] = data.time03;
+    DataChart.data.datasets[0].data[4] = data.time04;
+
+    DataChart.update();
+  });
+  }
+  update();
+
+
+
+
   if (feature1) {
 
+
+
+    //$('#test').load('/map' + ' #test');
+    sensorname = feature1.get('name');
+    document.getElementById("p1").innerHTML = sensorname;
     //display modal
     $('.ui.modal')
       .modal({
@@ -79,10 +114,16 @@ map.on('click', function(evt) {
     // });
     // $(element).popover('show');
   } else {
+
     $('.ui.modal')
       .modal('hide');
     $(element).popover('destroy');
   }
+
 });
 
+<<<<<<< HEAD
 
+=======
+//
+>>>>>>> 486daa57a56d98a17f0086d7814b599666c3a749
