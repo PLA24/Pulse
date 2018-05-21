@@ -22,6 +22,8 @@ var map = new ol.Map({
       })
     }),
 
+    //Heatmap,
+
     //gemeente layer
     currentLayer(),
     //pulse icon
@@ -31,7 +33,7 @@ var map = new ol.Map({
   target: 'map',
   view: new ol.View({
     center: ol.proj.fromLonLat([5.498573, 52.165923]),
-    minZoom: 8,
+    minZoom: 0,
     maxZoom: 18,
     zoom: 8,
     exte3nt: [500000, 6750000, 750000, 7000000]
