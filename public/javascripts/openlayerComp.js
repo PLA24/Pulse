@@ -38,7 +38,7 @@ var popup = new ol.Overlay({
 map.addOverlay(popup);
 var sensorname;
 
-
+testprint = 0;
 
 
 // display popup on click
@@ -59,10 +59,19 @@ map.on('click', function(evt) {
 
   function update() {
   $.get("/map/mapdata/" + locatieID, function(data) {
-    $("#test").html(data);
+    $("#test").html(data.AmountTotal);
+    console.log("hallooo" + testprint)
+    DataChart.data.datasets[0].data[0] = 0;
+    DataChart.data.datasets[0].data[1] = data.time01;
+    DataChart.data.datasets[0].data[2] = data.time02;
+    DataChart.data.datasets[0].data[3] = data.time03;
+    DataChart.data.datasets[0].data[4] = data.time04;
+
+    DataChart.update();
   });
   }
   update();
+
 
 
 

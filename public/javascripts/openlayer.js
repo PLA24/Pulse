@@ -20,7 +20,7 @@ var style = new ol.style.Style({
   })
 });
 
-//eigenschappen pulse marker
+//eigenschappen pulse markers
 var iconFeature = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
   name: 'Amsterdam HVA BPH',
@@ -31,7 +31,7 @@ var iconFeature = new ol.Feature({
 
 var iconFeature2 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([7.908942, 52.359899])),
-  name: 'test 2',
+  name: 'Rotterdam',
   locatieID: 2
 
 

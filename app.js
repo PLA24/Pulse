@@ -13,6 +13,7 @@ var index = require('./routes/index');
 var settings = require('./routes/settings');
 var users = require('./routes/users');
 var map = require('./routes/map');
+var test = require('./routes/test');
 var solution = require('./routes/solution');
 var learn = require('./routes/learn');
 var about = require('./routes/about');
@@ -75,6 +76,7 @@ app.use('/register', register);
 app.use('/settings', settings);
 app.use('/forgot',forgot);
 app.use('/reset', reset);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

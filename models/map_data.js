@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var CarsSchema = mongoose.Schema({
-  locatinID: {
+  locatieID: {
     type: Number,
     index: true
 
@@ -23,6 +23,10 @@ var CarsSchema = mongoose.Schema({
     index: true
   },
   merk: {
+    type: String,
+    index: true
+  },
+  brandstof: {
     type: String,
     index: true
   }

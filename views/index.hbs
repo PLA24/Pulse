@@ -13,7 +13,7 @@
 
   <script>
     function makeBar(name, [a1, a2, a3, a4, a5, a6], [v1, v2, v3, v4, v5, v6], [m1, m2, m3, m4, m5, m6], [b1, b2, b3, b4, b5, b6], [aw1, aw2, aw3, aw4, aw5, aw6]){
-          new Chart(name, {
+        var TopbarChart =  new Chart(name, {
                   type: 'bar',
                   data: {
                     labels:["00:00 - 04:00", "04:00 - 08:00", "08:00 - 12:00", "12:00 - 16:00", "16:00 - 20:00", "20:00 - 00:00"],
@@ -47,6 +47,12 @@
               });
         }
 
+
+  </script>
+
+  <script type="text/javascript">
+
+
   </script>
 
 <div style="margin-left: 10%; margin-right:5%">
@@ -75,43 +81,43 @@
 
       <div class="ui five statistics">
         <div class="statistic">
-          <div class="value">
-            2,204
+          <div class="value" id = "personenautovalue">
+            0
           </div>
           <div class="label">
-            Auto's
+            Personenauto's
           </div>
         </div>
         <div class="statistic">
-          <div class="value">
-            3,322
+          <div class="value" id = "bedrijfsautovalue">
+            0
           </div>
           <div class="label">
-            Vrachtwagens
+            Bedrijfsauto's
           </div>
         </div>
         <div class="statistic">
-          <div class="value">
-            22
-          </div>
-          <div class="label">
-            Motoren
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value">
-            2,204
-          </div>
-          <div class="label">
-            Bromfietsen
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value">
-            2,204
+          <div class="value" id = "aanhangwagenvalue">
+            0
           </div>
           <div class="label">
             Aanhangwagens
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value" id = "motorfietsvalue">
+            0
+          </div>
+          <div class="label">
+            Motorfietsen
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value" id = "bromfietsvalue">
+            0
+          </div>
+          <div class="label">
+            Bromfietsen
           </div>
         </div>
       </div>
@@ -214,7 +220,7 @@
                   data: {
                     labels:["12:00", "13:00", "14:00", "15:00", "16:00"],
                     datasets:[{
-                      label:"Auto's",
+                      label:"Personenauto's",
                       data:[100, 123, 134, 145, 170],
                       backgroundColor: "#bf76gg"
                     }, {
@@ -233,13 +239,27 @@
         }
         };
       </script>
+      <script type="text/javascript">
+      console.log("HALLOOOOOO");
+      $.get("/livecountday", function(data) {
+        $("#personenautovalue").html(data.personenauto);
+        $("#bedrijfsautovalue").html(data.bedrijfsauto);
+        $("#aanhangwagenvalue").html(data.aanhangwagen);
+        $("#motorfietsvalue").html(data.motorfiets);
+        $("#bromfietsvalue").html(data.bromfiets);
+        console.log("hallooo" + data.personenauto);
+
+        });
+      </script>
+
+
   </div>
 
   <div class="ui segment" style="width:33%">
       <h2 class="ui center aligned header">
         <div class="content">
           Type voertuigen
-          <div class="sub header">in het laatste uur</div>
+          <div class="sub header">vandaag</div>
         </div>
       </h2>
       <canvas id="myPie2" width="400" height="400"></canvas>
@@ -258,6 +278,21 @@
             }
           });
         </script>
+        <script type="text/javascript">
+        console.log("HALLOOOOOO");
+        $.get("/fueldata", function(data) {
+          //$("#test").html(data.AmountTotal);
+          console.log("hallooo" + data)
+          myPieChart.data.datasets[0].data[0] = data.elektrisch;
+          myPieChart.data.datasets[0].data[1] = data.benzine;
+          myPieChart.data.datasets[0].data[2] = data.diesel;
+          myPieChart.data.datasets[0].data[3] = data.hybrid;
+          myPieChart.update();
+
+          });
+        </script>
+
+
     </div>
   </div>
 
