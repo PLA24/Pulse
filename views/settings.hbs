@@ -48,14 +48,14 @@
 </head>
 
 <body>
+
 <div class="ui grid">
-    <div class="four wide column">
-        <div class="ui vertical fluid tabular menu" id="menu">
-            <a class="teal item active">Account information</a>
-        </div>
-    </div>
+
     <div class="twelve wide stretched column">
-        <div class="ui container">
+      <center>
+        <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1></center>
+
+        <div class="ui container" id = "settings">
             <label>Username</label>
             <div class="ui input">
                 <input type="text" name="username" value="{{UserName}}">
@@ -76,19 +76,19 @@
                 <input type="text" name="Township" value="{{Township}}">
             <p></p>
         </div>
-        <div class="ui right bottom container">
+        <div class="ui right  container" id = "button">
             <button type="submit" class="ui blue submit button" id="edit">Edit</button>
         </div>
     </div>
-        <div id="popup">
-            <div>Enter Password:</div>
-            <input id="pass" type="password"/>
-            <button onclick="done()">Done</button>
-        </div>
-        <button onclick="showPopup()">Show Popup</button>
+        <center
 </div>
 </div>
+<style media="screen">
+  #settings{
+    margin-top: 100px;
+  }
 
+</style>
 
 <script>
     function done() {

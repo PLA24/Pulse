@@ -89,6 +89,7 @@ map.on('click', function(evt) {
 
   sensorname = feature1.get('name');
   locatieID = feature1.get('locatieID');
+  tempcity = feature1.get('city');
   console.log(sensorname);
   console.log("locatie ID " + locatieID);
 
@@ -105,6 +106,13 @@ map.on('click', function(evt) {
     DataChart.update();
   });
   }
+  $.get("http://api.openweathermap.org/data/2.5/weather?q="+ tempcity + "&APPID=0cf54f43941aa1eefd04455a4a2593f9", function(data) {
+    var tempcelsius = Math.round((data.main.temp - 273.15) * 100) / 100;
+    console.log(tempcelsius);
+    $("#temp").html(tempcelsius);
+  });
+
+
   update();
 
 

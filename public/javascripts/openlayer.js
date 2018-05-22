@@ -26,7 +26,8 @@ data = new ol.source.Vector();
 var pulsemarker1 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
   name: 'Amsterdam',
-  locatieID: 1
+  locatieID: 1,
+  city: 'amsterdam'
 
 
 });
@@ -34,16 +35,16 @@ var pulsemarker1 = new ol.Feature({
 var pulsemarker2 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.477733, 51.924420])),
   name: 'Rotterdam',
-  locatieID: 2
-
+  locatieID: 2,
+  city: 'rotterdam'
 
 });
 
 var pulsemarker3 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([5.471422, 52.518537])),
   name: 'Lelystad',
-  locatieID: 3
-
+  locatieID: 3,
+  city: 'lelystad'
 
 });
 //heatmap marker data
