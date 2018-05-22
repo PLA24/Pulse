@@ -7,29 +7,87 @@
     <title>forgot</title>
 
     <style>
-        body {
-            margin-top: 1%;
-            margin-left: 10%;
+        body > .grid {
+            height: 100%;
+        }
+        .image {
+            margin-top: -100px;
+        }
+        .column {
+            max-width: 450px;
+        }
+        #video-bg-elem {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 100%;
+            min-width: 100%;
         }
 
-
     </style>
+    <script>
+        $(document)
+                .ready(function() {
+                    $('.ui.form')
+                            .form({
+                                fields: {
+                                    email: {
+                                        identifier  : 'email',
+                                        rules: [
+                                            {
+                                                type   : 'empty',
+                                                prompt : 'Please enter your e-mail'
+                                            }
+                                        ]
+                                    }
+                                }
+                            })
+                    ;
+                })
+        ;
+    </script>
 
 </head>
 <body>
-<form class="ui large form" method="post" action="/users/forgot">
-    <div class="ui container">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" autofocus class="form-control">
+<div class="background-wrap">
+    <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
+        <source src="/video/background.mp4" type="video/mp4">
+        Sorry That The Amazing video Is Not Supported Please Contact us and tell us which operating system or which browser you use Sorry!
+    </video>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="content">
+            <div class="ui small image">
+                <img src="/images/pulselogo.png">
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Reset Password">
+        </div>
+        <div class="ui inverted image header">
+            <div class="content">
+                <h2>Reset your password</h2>
             </div>
+        </div>
+        <form class="ui large form" method="post" action="/users/forgot">
+            <div class="ui stacked segment">
+                <div class="field">
+                        <div class="form-group">
+                            <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                </div>
+                    <div class="form-group">
+                        <div class="ui fluid large blue submit button" >Reset</div>
+                    </div>
+            </div>
+        </form>
     </div>
-</form>
-
-<script></script>
+</div>
 </body>
 </html>
+
+
+
+
 
