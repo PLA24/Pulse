@@ -58,3 +58,12 @@ module.exports.comparePassword = function(canidatePassword, hash, callback){
     callback(null, isMatch);
   });
 }
+
+module.exports.setPassword = function(newPassword, user, callback){
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(newPassword, salt, function(err, hash) {
+            user.password = hash;
+            user.save(callback);
+        });
+    });
+}

@@ -170,7 +170,7 @@ router.post('/forgot', function(req, res, next) {
                 subject: 'Node.js Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                'http://' + req.headers.host + '/users/reset/' + token + '\n\n' +
                 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
@@ -204,7 +204,7 @@ router.post('/reset/:token', function(req, res) {
                     return res.redirect('back');
                 }
                 if(req.body.password === req.body.confirm) {
-                    user.setPassword(req.body.password, function(err) {
+                    User.setPassword(req.body.password,user, function(err) {
                         user.resetPasswordToken = undefined;
                         user.resetPasswordExpires = undefined;
 
@@ -242,7 +242,7 @@ router.post('/reset/:token', function(req, res) {
         }
     ], function(err) {
         if (err) return next(err);
-        res.redirect('/forgot');
+        res.redirect('/homepage');
 
         }
     );
