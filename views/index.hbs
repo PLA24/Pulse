@@ -26,9 +26,9 @@
                 <div class="text">day</div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <div class="active item" data-text="day" id="day">Day</div>
-                  <div class="item" data-text="week" id="week">Week</div>
-                  <div class="item" data-text="month" id="month">Month</div>
+                  <div class="active item" data-text="today" id="day">Day</div>
+                  <div class="item" data-text="past 7 days" id="week">Week</div>
+                  <div class="item" data-text="past 30 days" id="month">Month</div>
                 </div>
               </div>
             </div>
@@ -270,16 +270,18 @@
           };
         </script>
         <script type="text/javascript">
-          console.log("HALLOOOOOO");
-          $.get("/livecountday", function(data) {
-            $("#personenautovalue").html(data.personenauto);
-            $("#bedrijfsautovalue").html(data.bedrijfsauto);
-            $("#aanhangwagenvalue").html(data.aanhangwagen);
-            $("#motorfietsvalue").html(data.motorfiets);
-            $("#bromfietsvalue").html(data.bromfiets);
-            console.log("hallooo" + data.personenauto);
+          function getlivecountday() {
+            $.get("/livecountday", function(data) {
+              $("#personenautovalue").html(data.personenauto);
+              $("#bedrijfsautovalue").html(data.bedrijfsauto);
+              $("#aanhangwagenvalue").html(data.aanhangwagen);
+              $("#motorfietsvalue").html(data.motorfiets);
+              $("#bromfietsvalue").html(data.bromfiets);
 
-          });
+
+            });
+          }
+          getlivecountday();
         </script>
 
 
@@ -324,6 +326,33 @@
   </div>
 
   <script>
+  function getweekdata() {
+    $.get("/livecountweek", function(data) {
+      $("#personenautovalue").html(data.personenauto);
+      $("#bedrijfsautovalue").html(data.bedrijfsauto);
+      $("#aanhangwagenvalue").html(data.aanhangwagen);
+      $("#motorfietsvalue").html(data.motorfiets);
+      $("#bromfietsvalue").html(data.bromfiets);
+
+
+    });
+  }
+
+  function getmonthdata() {
+    $.get("/livecountmonth", function(data) {
+      $("#personenautovalue").html(data.personenauto);
+      $("#bedrijfsautovalue").html(data.bedrijfsauto);
+      $("#aanhangwagenvalue").html(data.aanhangwagen);
+      $("#motorfietsvalue").html(data.motorfiets);
+      $("#bromfietsvalue").html(data.bromfiets);
+
+
+    });
+  }
+
+
+
+
       $('.ui.inline.dropdown')
               .dropdown();
 
@@ -333,13 +362,11 @@
               console.log(currentPeriod);
 
               if(currentPeriod == "week"){
-                  console.log("hier moet data uit database per week worden opgehaald")
+                  getweekdata();
               }else if(currentPeriod == "month"){
-                  console.log("hier moet data uit database per maand worden opgehaald")
+                  getmonthdata();
               }else {
-                  console.log("hier moet data uit database per dag worden opgehaald, hou in rekening dat standaard" +
-                          "op dag staat dus voor het click gebeuren moet de data van dag al worden opgehaald." +
-                          "Als daarna op week/maand wordt geklikt en vervolgens weer op dag dan voert het deze code uit")
+                  getlivecountday();
               }
           });
       });

@@ -19,6 +19,69 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
+
+var today = new Date();
+var todayplus = new Date();
+var lastweek = new Date();
+var lastmonth = new Date();
+todayplus.setDate(todayplus.getDate() + 1);
+lastweek.setDate(lastweek.getDate() - 7);
+lastmonth.setDate(lastmonth.getDate() - 30);
+
+var curday = today.getDate();
+var curmonth = today.getMonth()+1;
+var curyear = today.getFullYear();
+
+var curday2 = todayplus.getDate();
+var curmonth2 = todayplus.getMonth()+1;
+var curyear2 = todayplus.getFullYear();
+
+var lastweekday = lastweek.getDate();
+var lastweekmonth = lastweek.getMonth()+1;
+var lastweekyear = lastweek.getFullYear();
+
+var lastmonthday = lastmonth.getDate();
+var lastmonthmonth = lastmonth.getMonth()+1;
+var lastmonthyear = lastmonth.getFullYear();
+
+if(curday<10) {
+    curday = '0'+curday
+}
+if(curmonth<10) {
+    curmonth = '0'+curmonth
+}
+
+if(curday2<10) {
+    curday2 = '0'+curday2
+}
+if(curmonth2<10) {
+    curmonth2 = '0'+curmonth2
+}
+
+if(lastweekday<10) {
+    lastweekday = '0'+lastweekday
+}
+if(lastweekmonth<10) {
+    lastweekmonth = '0'+lastweekmonth
+}
+
+if(lastmonthday<10) {
+    lastmonthday = '0'+lastmonthday
+}
+if(lastmonthmonth<10) {
+    lastmonthmonth = '0'+lastmonthmonth
+}
+// set the proper format
+today = curyear + '-' + curmonth + '-' + curday;
+todayplus = curyear2 + '-' + curmonth2 + '-' + curday2;
+lastweek = lastweekyear + '-' + lastweekmonth + '-' + lastweekday;
+lastmonth = lastmonthyear + '-' + lastmonthmonth + '-' + lastmonthday;
+// print dates
+console.log(today);
+console.log(todayplus);
+console.log(lastweek);
+console.log(lastmonth);
+
 router.get('/graphdata01', function(req, res) {
   var graphdata01= {};
   datamodel.find({
@@ -27,8 +90,8 @@ router.get('/graphdata01', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T00:00:00.000Z"),
-          $lt: new Date("2018-02-03T03:00:00.000Z")
+          $gte: new Date(today + "T00:00:00.000"),
+          $lt: new Date(today + "T04:00:00.000")
         }
       }
     ]
@@ -41,8 +104,8 @@ router.get('/graphdata01', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T00:00:00.000Z"),
-            $lt: new Date("2018-02-03T03:00:00.000Z")
+            $gte: new Date(today + "T00:00:00.000"),
+            $lt: new Date(today + "T04:00:00.000")
           }
         }
       ]
@@ -55,8 +118,8 @@ router.get('/graphdata01', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T00:00:00.000Z"),
-              $lt: new Date("2018-02-03T03:00:00.000Z")
+              $gte: new Date(today + "T00:00:00.000"),
+              $lt: new Date(today + "T04:00:00.000")
             }
           }
         ]
@@ -69,8 +132,8 @@ router.get('/graphdata01', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T00:00:00.000Z"),
-                $lt: new Date("2018-02-03T03:00:00.000Z")
+                $gte: new Date(today + "T00:00:00.000"),
+                $lt: new Date(today + "T04:00:00.000")
               }
             }
           ]
@@ -83,8 +146,8 @@ router.get('/graphdata01', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T00:00:00.000Z"),
-                  $lt: new Date("2018-02-03T03:00:00.000Z")
+                  $gte: new Date(today + "T00:00:00.000"),
+                  $lt: new Date(today + "T04:00:00.000")
                 }
               }
             ]
@@ -107,8 +170,8 @@ router.get('/graphdata02', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T03:00:00.000Z"),
-          $lt: new Date("2018-02-03T07:00:00.000Z")
+          $gte: new Date(today + "T04:00:00.000"),
+          $lt: new Date(today + "T08:00:00.000")
         }
       }
     ]
@@ -121,8 +184,8 @@ router.get('/graphdata02', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T03:00:00.000Z"),
-            $lt: new Date("2018-02-03T07:00:00.000Z")
+            $gte: new Date(today + "T04:00:00.000"),
+            $lt: new Date(today + "T08:00:00.000")
           }
         }
       ]
@@ -135,8 +198,8 @@ router.get('/graphdata02', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T03:00:00.000Z"),
-              $lt: new Date("2018-02-03T07:00:00.000Z")
+              $gte: new Date(today + "T04:00:00.000"),
+              $lt: new Date(today + "T08:00:00.000")
             }
           }
         ]
@@ -149,8 +212,8 @@ router.get('/graphdata02', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T03:00:00.000Z"),
-                $lt: new Date("2018-02-03T07:00:00.000Z")
+                $gte: new Date(today + "T04:00:00.000"),
+                $lt: new Date(today + "T08:00:00.000")
               }
             }
           ]
@@ -163,8 +226,8 @@ router.get('/graphdata02', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T03:00:00.000Z"),
-                  $lt: new Date("2018-02-03T07:00:00.000Z")
+                  $gte: new Date(today + "T04:00:00.000"),
+                  $lt: new Date(today + "T08:00:00.000")
                 }
               }
             ]
@@ -187,8 +250,8 @@ router.get('/graphdata03', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T07:00:00.000Z"),
-          $lt: new Date("2018-02-03T11:00:00.000Z")
+          $gte: new Date(today + "T08:00:00.000"),
+          $lt: new Date(today + "T12:00:00.000")
         }
       }
     ]
@@ -201,8 +264,8 @@ router.get('/graphdata03', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T07:00:00.000Z"),
-            $lt: new Date("2018-02-03T11:00:00.000Z")
+            $gte: new Date(today + "T08:00:00.000"),
+            $lt: new Date(today + "T12:00:00.000")
           }
         }
       ]
@@ -215,8 +278,8 @@ router.get('/graphdata03', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T07:00:00.000Z"),
-              $lt: new Date("2018-02-03T11:00:00.000Z")
+              $gte: new Date(today + "T08:00:00.000"),
+              $lt: new Date(today + "T12:00:00.000")
             }
           }
         ]
@@ -229,8 +292,8 @@ router.get('/graphdata03', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T07:00:00.000Z"),
-                $lt: new Date("2018-02-03T11:00:00.000Z")
+                $gte: new Date(today + "T08:00:00.000"),
+                $lt: new Date(today + "T12:00:00.000")
               }
             }
           ]
@@ -243,8 +306,8 @@ router.get('/graphdata03', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T07:00:00.000Z"),
-                  $lt: new Date("2018-02-03T11:00:00.000Z")
+                  $gte: new Date(today + "T08:00:00.000"),
+                  $lt: new Date(today + "T12:00:00.000")
                 }
               }
             ]
@@ -267,8 +330,8 @@ router.get('/graphdata04', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T11:00:00.000Z"),
-          $lt: new Date("2018-02-03T15:00:00.000Z")
+          $gte: new Date(today + "T12:00:00.000"),
+          $lt: new Date(today + "T16:00:00.000")
         }
       }
     ]
@@ -281,8 +344,8 @@ router.get('/graphdata04', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T11:00:00.000Z"),
-            $lt: new Date("2018-02-03T15:00:00.000Z")
+            $gte: new Date(today + "T12:00:00.000"),
+            $lt: new Date(today + "T16:00:00.000")
           }
         }
       ]
@@ -295,8 +358,8 @@ router.get('/graphdata04', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T11:00:00.000Z"),
-              $lt: new Date("2018-02-03T15:00:00.000Z")
+              $gte: new Date(today + "T12:00:00.000"),
+              $lt: new Date(today + "T16:00:00.000")
             }
           }
         ]
@@ -309,8 +372,8 @@ router.get('/graphdata04', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T11:00:00.000Z"),
-                $lt: new Date("2018-02-03T15:00:00.000Z")
+                $gte: new Date(today + "T12:00:00.000"),
+                $lt: new Date(today + "T16:00:00.000")
               }
             }
           ]
@@ -323,8 +386,8 @@ router.get('/graphdata04', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T11:00:00.000Z"),
-                  $lt: new Date("2018-02-03T15:00:00.000Z")
+                  $gte: new Date(today + "T12:00:00.000"),
+                  $lt: new Date(today + "T16:00:00.000")
                 }
               }
             ]
@@ -347,8 +410,8 @@ router.get('/graphdata05', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T15:00:00.000Z"),
-          $lt: new Date("2018-02-03T19:00:00.000Z")
+          $gte: new Date( today + "T16:00:00.000"),
+          $lt: new Date(today + "T20:00:00.000")
         }
       }
     ]
@@ -361,8 +424,8 @@ router.get('/graphdata05', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T15:00:00.000Z"),
-            $lt: new Date("2018-02-03T19:00:00.000Z")
+            $gte: new Date(today + "T16:00:00.000"),
+            $lt: new Date(today + "T20:00:00.000")
           }
         }
       ]
@@ -375,8 +438,8 @@ router.get('/graphdata05', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T15:00:00.000Z"),
-              $lt: new Date("2018-02-03T19:00:00.000Z")
+              $gte: new Date(today + "T16:00:00.000"),
+              $lt: new Date(today + "T20:00:00.000")
             }
           }
         ]
@@ -389,8 +452,8 @@ router.get('/graphdata05', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T15:00:00.000Z"),
-                $lt: new Date("2018-02-03T19:00:00.000Z")
+                $gte: new Date(today + "T16:00:00.000"),
+                $lt: new Date(today + "T20:00:00.000")
               }
             }
           ]
@@ -403,8 +466,8 @@ router.get('/graphdata05', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T15:00:00.000Z"),
-                  $lt: new Date("2018-02-03T19:00:00.000Z")
+                  $gte: new Date(today + "T16:00:00.000"),
+                  $lt: new Date(today + "T20:00:00.000")
                 }
               }
             ]
@@ -427,8 +490,8 @@ router.get('/graphdata06', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03T19:00:00.000Z"),
-          $lt: new Date("2018-02-03T24:00:00.000Z")
+          $gte: new Date(today + "T20:00:00.000"),
+          $lt: new Date(today + "T24:00:00.000")
         }
       }
     ]
@@ -441,8 +504,8 @@ router.get('/graphdata06', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03T19:00:00.000Z"),
-            $lt: new Date("2018-02-03T24:00:00.000Z")
+            $gte: new Date(today + "T20:00:00.000"),
+            $lt: new Date(today + "T24:00:00.000")
           }
         }
       ]
@@ -455,8 +518,8 @@ router.get('/graphdata06', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03T19:00:00.000Z"),
-              $lt: new Date("2018-02-03T24:00:00.000Z")
+              $gte: new Date(today + "T20:00:00.000"),
+              $lt: new Date(today + "T24:00:00.000")
             }
           }
         ]
@@ -469,8 +532,8 @@ router.get('/graphdata06', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03T19:00:00.000Z"),
-                $lt: new Date("2018-02-03T24:00:00.000Z")
+                $gte: new Date(today + "T20:00:00.000"),
+                $lt: new Date(today + "T24:00:00.000")
               }
             }
           ]
@@ -483,8 +546,8 @@ router.get('/graphdata06', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03T19:00:00.000Z"),
-                  $lt: new Date("2018-02-03T24:00:00.000Z")
+                  $gte: new Date(today + "T20:00:00.000"),
+                  $lt: new Date(today + "T24:00:00.000")
                 }
               }
             ]
@@ -507,8 +570,8 @@ router.get('/livecountday', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03"),
-          $lt: new Date("2018-02-04")
+          $gte: new Date(today),
+          $lt: new Date(todayplus)
         }
       }
     ]
@@ -521,8 +584,8 @@ router.get('/livecountday', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03"),
-            $lt: new Date("2018-02-04")
+            $gte: new Date(today),
+            $lt: new Date(todayplus)
           }
         }
       ]
@@ -535,8 +598,8 @@ router.get('/livecountday', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03"),
-              $lt: new Date("2018-02-04")
+              $gte: new Date(today),
+              $lt: new Date(todayplus)
             }
           }
         ]
@@ -549,8 +612,8 @@ router.get('/livecountday', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03"),
-                $lt: new Date("2018-02-04")
+                $gte: new Date(today),
+                $lt: new Date(todayplus)
               }
             }
           ]
@@ -563,8 +626,8 @@ router.get('/livecountday', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03"),
-                  $lt: new Date("2018-02-04")
+                  $gte: new Date(today),
+                  $lt: new Date(todayplus)
                 }
               }
             ]
@@ -587,8 +650,8 @@ router.get('/livecountweek', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03"),
-          $lt: new Date("2018-02-04")
+          $gte: new Date(lastweek),
+          $lt: new Date(todayplus)
         }
       }
     ]
@@ -601,8 +664,8 @@ router.get('/livecountweek', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03"),
-            $lt: new Date("2018-02-04")
+            $gte: new Date(lastweek),
+            $lt: new Date(todayplus)
           }
         }
       ]
@@ -615,8 +678,8 @@ router.get('/livecountweek', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03"),
-              $lt: new Date("2018-02-04")
+              $gte: new Date(lastweek),
+              $lt: new Date(todayplus)
             }
           }
         ]
@@ -629,8 +692,8 @@ router.get('/livecountweek', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03"),
-                $lt: new Date("2018-02-04")
+                $gte: new Date(lastweek),
+                $lt: new Date(todayplus)
               }
             }
           ]
@@ -643,8 +706,88 @@ router.get('/livecountweek', function(req, res) {
               },
               {
                 date: {
-                  $gte: new Date("2018-02-03"),
-                  $lt: new Date("2018-02-04")
+                  $gte: new Date(lastweek),
+                  $lt: new Date(todayplus)
+                }
+              }
+            ]
+          }).count({}, function(err, count) {
+            livecounter.bromfiets = count.toString();
+            res.send(livecounter);
+          })
+        })
+      })
+    })
+  })
+
+});
+
+router.get('/livecountmonth', function(req, res) {
+  var livecounter = {};
+  datamodel.find({
+    $and: [{
+        voertuigcategorie: "Personenauto"
+      },
+      {
+        date: {
+          $gte: new Date(lastmonth),
+          $lt: new Date(todayplus)
+        }
+      }
+    ]
+  }).count({}, function(err, count) {
+    livecounter.personenauto = count.toString();
+
+    datamodel.find({
+      $and: [{
+          voertuigcategorie: "Bedrijfsauto"
+        },
+        {
+          date: {
+            $gte: new Date(lastmonth),
+            $lt: new Date(todayplus)
+          }
+        }
+      ]
+    }).count({}, function(err, count) {
+      livecounter.bedrijfsauto = count.toString();
+
+      datamodel.find({
+        $and: [{
+            voertuigcategorie: "Aanhangwagen"
+          },
+          {
+            date: {
+              $gte: new Date(lastmonth),
+              $lt: new Date(todayplus)
+            }
+          }
+        ]
+      }).count({}, function(err, count) {
+        livecounter.aanhangwagen = count.toString();
+
+        datamodel.find({
+          $and: [{
+              voertuigcategorie: "Motorfiets"
+            },
+            {
+              date: {
+                $gte: new Date(lastmonth),
+                $lt: new Date(todayplus)
+              }
+            }
+          ]
+        }).count({}, function(err, count) {
+          livecounter.motorfiets = count.toString();
+
+          datamodel.find({
+            $and: [{
+                voertuigcategorie: "Bromfiets"
+              },
+              {
+                date: {
+                  $gte: new Date(lastmonth),
+                  $lt: new Date(todayplus)
                 }
               }
             ]
@@ -667,8 +810,8 @@ router.get('/fueldata', function(req, res) {
       },
       {
         date: {
-          $gte: new Date("2018-02-03"),
-          $lt: new Date("2018-02-04")
+          $gte: new Date(today),
+          $lt: new Date(todayplus)
         }
       }
     ]
@@ -682,8 +825,8 @@ router.get('/fueldata', function(req, res) {
         },
         {
           date: {
-            $gte: new Date("2018-02-03"),
-            $lt: new Date("2018-02-04")
+            $gte: new Date(today),
+            $lt: new Date(todayplus)
           }
         }
       ]
@@ -698,8 +841,8 @@ router.get('/fueldata', function(req, res) {
           },
           {
             date: {
-              $gte: new Date("2018-02-03"),
-              $lt: new Date("2018-02-04")
+              $gte: new Date(today),
+              $lt: new Date(todayplus)
             }
           }
         ]
@@ -713,8 +856,8 @@ router.get('/fueldata', function(req, res) {
             },
             {
               date: {
-                $gte: new Date("2018-02-03"),
-                $lt: new Date("2018-02-04")
+                $gte: new Date(today),
+                $lt: new Date(todayplus)
               }
             }
           ]

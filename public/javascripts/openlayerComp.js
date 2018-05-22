@@ -9,6 +9,24 @@ function currentLayer() {
     }
 }
 
+var mapdate = new Date();
+mapdate.setDate(mapdate.getDate() - 30)
+
+var curday = mapdate.getDate();
+var curmonth = mapdate.getMonth()+1; //January is 0!
+var curyear = mapdate.getFullYear();
+
+if(curday<10) {
+    curday = '0'+curday
+}
+if(curmonth<10) {
+    curmonth = '0'+curmonth
+}
+
+mapdate = curyear + '_' + curmonth + '_'
+console.log(mapdate);
+
+
 var map = new ol.Map({
     layers: [
     //base layer van openstreet
@@ -18,22 +36,24 @@ var map = new ol.Map({
     //planet mosaic tile layer
     new ol.layer.Tile({
       source: new ol.source.XYZ({
-        url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2017_08_mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
+        url: 'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_'+ mapdate + 'mosaic/gmap/{z}/{x}/{y}.png?api_key=cc785926661d40188fe04e08a97b609e'
       })
     }),
 
-    //Heatmap,
+
 
     //gemeente layer
     currentLayer(),
     //pulse icon
     vectorLayer
+
+    //Heatmap
   ],
   //view eigenschappen
   target: 'map',
   view: new ol.View({
     center: ol.proj.fromLonLat([5.498573, 52.165923]),
-    minZoom: 0,
+    minZoom: 8,
     maxZoom: 18,
     zoom: 8,
     exte3nt: [500000, 6750000, 750000, 7000000]
