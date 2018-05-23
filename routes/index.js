@@ -1,8 +1,10 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var datamodel = require('../models/map_data');
+var datamodel2 = require('../models/map_data_pi');
 var router = express.Router();
-/* GET home page. */
+
+/* GET index page. */
 router.get('/', ensureAuthenticated, function(req, res) {
   res.render('index', {
     title: "Pulse",
@@ -19,7 +21,7 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-
+// current dates for the queries
 var today = new Date();
 var todayplus = new Date();
 var lastweek = new Date();
@@ -82,14 +84,15 @@ console.log(todayplus);
 console.log(lastweek);
 console.log(lastmonth);
 
+//get request for graphdata from database
 router.get('/graphdata01', function(req, res) {
   var graphdata01= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today + "T00:00:00.000"),
           $lt: new Date(today + "T04:00:00.000")
         }
@@ -98,12 +101,12 @@ router.get('/graphdata01', function(req, res) {
   }).count({}, function(err, count) {
     graphdata01.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T00:00:00.000"),
             $lt: new Date(today + "T04:00:00.000")
           }
@@ -112,12 +115,12 @@ router.get('/graphdata01', function(req, res) {
     }).count({}, function(err, count) {
       graphdata01.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T00:00:00.000"),
               $lt: new Date(today + "T04:00:00.000")
             }
@@ -126,12 +129,12 @@ router.get('/graphdata01', function(req, res) {
       }).count({}, function(err, count) {
         graphdata01.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T00:00:00.000"),
                 $lt: new Date(today + "T04:00:00.000")
               }
@@ -140,12 +143,12 @@ router.get('/graphdata01', function(req, res) {
         }).count({}, function(err, count) {
           graphdata01.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T00:00:00.000"),
                   $lt: new Date(today + "T04:00:00.000")
                 }
@@ -164,12 +167,12 @@ router.get('/graphdata01', function(req, res) {
 
 router.get('/graphdata02', function(req, res) {
   var graphdata02= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today + "T04:00:00.000"),
           $lt: new Date(today + "T08:00:00.000")
         }
@@ -178,12 +181,12 @@ router.get('/graphdata02', function(req, res) {
   }).count({}, function(err, count) {
     graphdata02.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T04:00:00.000"),
             $lt: new Date(today + "T08:00:00.000")
           }
@@ -192,12 +195,12 @@ router.get('/graphdata02', function(req, res) {
     }).count({}, function(err, count) {
       graphdata02.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T04:00:00.000"),
               $lt: new Date(today + "T08:00:00.000")
             }
@@ -206,12 +209,12 @@ router.get('/graphdata02', function(req, res) {
       }).count({}, function(err, count) {
         graphdata02.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T04:00:00.000"),
                 $lt: new Date(today + "T08:00:00.000")
               }
@@ -220,12 +223,12 @@ router.get('/graphdata02', function(req, res) {
         }).count({}, function(err, count) {
           graphdata02.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T04:00:00.000"),
                   $lt: new Date(today + "T08:00:00.000")
                 }
@@ -244,12 +247,12 @@ router.get('/graphdata02', function(req, res) {
 
 router.get('/graphdata03', function(req, res) {
   var graphdata03= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today + "T08:00:00.000"),
           $lt: new Date(today + "T12:00:00.000")
         }
@@ -258,12 +261,12 @@ router.get('/graphdata03', function(req, res) {
   }).count({}, function(err, count) {
     graphdata03.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T08:00:00.000"),
             $lt: new Date(today + "T12:00:00.000")
           }
@@ -272,12 +275,12 @@ router.get('/graphdata03', function(req, res) {
     }).count({}, function(err, count) {
       graphdata03.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T08:00:00.000"),
               $lt: new Date(today + "T12:00:00.000")
             }
@@ -286,12 +289,12 @@ router.get('/graphdata03', function(req, res) {
       }).count({}, function(err, count) {
         graphdata03.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T08:00:00.000"),
                 $lt: new Date(today + "T12:00:00.000")
               }
@@ -300,12 +303,12 @@ router.get('/graphdata03', function(req, res) {
         }).count({}, function(err, count) {
           graphdata03.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T08:00:00.000"),
                   $lt: new Date(today + "T12:00:00.000")
                 }
@@ -324,12 +327,12 @@ router.get('/graphdata03', function(req, res) {
 
 router.get('/graphdata04', function(req, res) {
   var graphdata04= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        vehicletype: {
           $gte: new Date(today + "T12:00:00.000"),
           $lt: new Date(today + "T16:00:00.000")
         }
@@ -338,12 +341,12 @@ router.get('/graphdata04', function(req, res) {
   }).count({}, function(err, count) {
     graphdata04.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T12:00:00.000"),
             $lt: new Date(today + "T16:00:00.000")
           }
@@ -352,12 +355,12 @@ router.get('/graphdata04', function(req, res) {
     }).count({}, function(err, count) {
       graphdata04.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T12:00:00.000"),
               $lt: new Date(today + "T16:00:00.000")
             }
@@ -366,12 +369,12 @@ router.get('/graphdata04', function(req, res) {
       }).count({}, function(err, count) {
         graphdata04.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T12:00:00.000"),
                 $lt: new Date(today + "T16:00:00.000")
               }
@@ -380,12 +383,12 @@ router.get('/graphdata04', function(req, res) {
         }).count({}, function(err, count) {
           graphdata04.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T12:00:00.000"),
                   $lt: new Date(today + "T16:00:00.000")
                 }
@@ -404,12 +407,12 @@ router.get('/graphdata04', function(req, res) {
 
 router.get('/graphdata05', function(req, res) {
   var graphdata05= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date( today + "T16:00:00.000"),
           $lt: new Date(today + "T20:00:00.000")
         }
@@ -418,12 +421,12 @@ router.get('/graphdata05', function(req, res) {
   }).count({}, function(err, count) {
     graphdata05.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T16:00:00.000"),
             $lt: new Date(today + "T20:00:00.000")
           }
@@ -432,12 +435,12 @@ router.get('/graphdata05', function(req, res) {
     }).count({}, function(err, count) {
       graphdata05.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T16:00:00.000"),
               $lt: new Date(today + "T20:00:00.000")
             }
@@ -446,12 +449,12 @@ router.get('/graphdata05', function(req, res) {
       }).count({}, function(err, count) {
         graphdata05.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T16:00:00.000"),
                 $lt: new Date(today + "T20:00:00.000")
               }
@@ -460,12 +463,12 @@ router.get('/graphdata05', function(req, res) {
         }).count({}, function(err, count) {
           graphdata05.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T16:00:00.000"),
                   $lt: new Date(today + "T20:00:00.000")
                 }
@@ -484,12 +487,12 @@ router.get('/graphdata05', function(req, res) {
 
 router.get('/graphdata06', function(req, res) {
   var graphdata06= {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today + "T20:00:00.000"),
           $lt: new Date(today + "T24:00:00.000")
         }
@@ -498,12 +501,12 @@ router.get('/graphdata06', function(req, res) {
   }).count({}, function(err, count) {
     graphdata06.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today + "T20:00:00.000"),
             $lt: new Date(today + "T24:00:00.000")
           }
@@ -512,12 +515,12 @@ router.get('/graphdata06', function(req, res) {
     }).count({}, function(err, count) {
       graphdata06.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today + "T20:00:00.000"),
               $lt: new Date(today + "T24:00:00.000")
             }
@@ -526,12 +529,12 @@ router.get('/graphdata06', function(req, res) {
       }).count({}, function(err, count) {
         graphdata06.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today + "T20:00:00.000"),
                 $lt: new Date(today + "T24:00:00.000")
               }
@@ -540,12 +543,12 @@ router.get('/graphdata06', function(req, res) {
         }).count({}, function(err, count) {
           graphdata06.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today + "T20:00:00.000"),
                   $lt: new Date(today + "T24:00:00.000")
                 }
@@ -562,14 +565,16 @@ router.get('/graphdata06', function(req, res) {
 
 })
 
+
+//get request for livecount bar from database
 router.get('/livecountday', function(req, res) {
   var livecounter = {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today),
           $lt: new Date(todayplus)
         }
@@ -578,12 +583,12 @@ router.get('/livecountday', function(req, res) {
   }).count({}, function(err, count) {
     livecounter.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today),
             $lt: new Date(todayplus)
           }
@@ -592,9 +597,9 @@ router.get('/livecountday', function(req, res) {
     }).count({}, function(err, count) {
       livecounter.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
             date: {
@@ -606,12 +611,12 @@ router.get('/livecountday', function(req, res) {
       }).count({}, function(err, count) {
         livecounter.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today),
                 $lt: new Date(todayplus)
               }
@@ -620,12 +625,12 @@ router.get('/livecountday', function(req, res) {
         }).count({}, function(err, count) {
           livecounter.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(today),
                   $lt: new Date(todayplus)
                 }
@@ -644,12 +649,12 @@ router.get('/livecountday', function(req, res) {
 
 router.get('/livecountweek', function(req, res) {
   var livecounter = {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(lastweek),
           $lt: new Date(todayplus)
         }
@@ -658,12 +663,12 @@ router.get('/livecountweek', function(req, res) {
   }).count({}, function(err, count) {
     livecounter.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(lastweek),
             $lt: new Date(todayplus)
           }
@@ -672,12 +677,12 @@ router.get('/livecountweek', function(req, res) {
     }).count({}, function(err, count) {
       livecounter.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(lastweek),
               $lt: new Date(todayplus)
             }
@@ -686,12 +691,12 @@ router.get('/livecountweek', function(req, res) {
       }).count({}, function(err, count) {
         livecounter.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(lastweek),
                 $lt: new Date(todayplus)
               }
@@ -700,12 +705,12 @@ router.get('/livecountweek', function(req, res) {
         }).count({}, function(err, count) {
           livecounter.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(lastweek),
                   $lt: new Date(todayplus)
                 }
@@ -724,12 +729,12 @@ router.get('/livecountweek', function(req, res) {
 
 router.get('/livecountmonth', function(req, res) {
   var livecounter = {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        voertuigcategorie: "Personenauto"
+        vehicletype: "Persoonsauto"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(lastmonth),
           $lt: new Date(todayplus)
         }
@@ -738,12 +743,12 @@ router.get('/livecountmonth', function(req, res) {
   }).count({}, function(err, count) {
     livecounter.personenauto = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          voertuigcategorie: "Bedrijfsauto"
+          vehicletype: "Bedrijfsauto"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(lastmonth),
             $lt: new Date(todayplus)
           }
@@ -752,12 +757,12 @@ router.get('/livecountmonth', function(req, res) {
     }).count({}, function(err, count) {
       livecounter.bedrijfsauto = count.toString();
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            voertuigcategorie: "Aanhangwagen"
+            vehicletype: "Aanhangwagen"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(lastmonth),
               $lt: new Date(todayplus)
             }
@@ -766,12 +771,12 @@ router.get('/livecountmonth', function(req, res) {
       }).count({}, function(err, count) {
         livecounter.aanhangwagen = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              voertuigcategorie: "Motorfiets"
+              vehicletype: "Motorfiets"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(lastmonth),
                 $lt: new Date(todayplus)
               }
@@ -780,12 +785,12 @@ router.get('/livecountmonth', function(req, res) {
         }).count({}, function(err, count) {
           livecounter.motorfiets = count.toString();
 
-          datamodel.find({
+          datamodel2.find({
             $and: [{
-                voertuigcategorie: "Bromfiets"
+                vehicletype: "Bromfiets"
               },
               {
-                date: {
+                timeSpotted: {
                   $gte: new Date(lastmonth),
                   $lt: new Date(todayplus)
                 }
@@ -804,12 +809,12 @@ router.get('/livecountmonth', function(req, res) {
 
 router.get('/fueldata', function(req, res) {
   var fuel = {};
-  datamodel.find({
+  datamodel2.find({
     $and: [{
-        brandstof: "elektrisch"
+        economylabel: "A"
       },
       {
-        date: {
+        timeSpotted: {
           $gte: new Date(today),
           $lt: new Date(todayplus)
         }
@@ -819,12 +824,12 @@ router.get('/fueldata', function(req, res) {
     console.log("Number of elektric cars:", count);
     fuel.elektrisch = count.toString();
 
-    datamodel.find({
+    datamodel2.find({
       $and: [{
-          brandstof: "benzine"
+          economylabel: "B"
         },
         {
-          date: {
+          timeSpotted: {
             $gte: new Date(today),
             $lt: new Date(todayplus)
           }
@@ -835,12 +840,12 @@ router.get('/fueldata', function(req, res) {
       fuel.benzine = count.toString();
       //res.send(fuel);
 
-      datamodel.find({
+      datamodel2.find({
         $and: [{
-            brandstof: "diesel"
+            economylabel: "C"
           },
           {
-            date: {
+            timeSpotted: {
               $gte: new Date(today),
               $lt: new Date(todayplus)
             }
@@ -850,12 +855,12 @@ router.get('/fueldata', function(req, res) {
         console.log("Number of diesel cars:", count);
         fuel.diesel = count.toString();
 
-        datamodel.find({
+        datamodel2.find({
           $and: [{
-              brandstof: "hybride"
+              economylabel: "G"
             },
             {
-              date: {
+              timeSpotted: {
                 $gte: new Date(today),
                 $lt: new Date(todayplus)
               }

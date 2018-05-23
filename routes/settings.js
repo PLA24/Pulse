@@ -5,7 +5,7 @@ var nodemailer = require("nodemailer");
 var crypto = require("crypto");
 var User = require('../models/user');
 
-/* GET home page. */
+/* GET settings page. */
 router.get('/', function(req, res) {
     res.render('settings', { UserName: req.user.username, Township: req.user.township, Password: req.user.password, Email: req.user.email});
 });

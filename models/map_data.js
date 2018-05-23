@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+//database model for retrieving data from cars collection (OLD)
 var CarsSchema = mongoose.Schema({
   locatieID: {
     type: Number,

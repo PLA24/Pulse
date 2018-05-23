@@ -47,7 +47,7 @@ var pulsemarker3 = new ol.Feature({
   city: 'lelystad'
 
 });
-//heatmap marker data
+//heatmap marker data wordt nog niet gebruik
 var pulsemarkerheatmap1 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
   name: 'Amsterdam',
@@ -73,7 +73,7 @@ var pulsemarkerheatmap3 = new ol.Feature({
 });
 
 
-
+// customize style options for markers
 var pulsemarkerstyle1 = new ol.style.Style({
   image: new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
     scale: 0.5,
@@ -103,10 +103,11 @@ var pulsemarkerstyle3= new ol.style.Style({
     src: '/images/pulse_icon.png'
   }))
 });
-
+//add makers to heatmap
 data.addFeature(pulsemarkerheatmap1);
 data.addFeature(pulsemarkerheatmap2);
 data.addFeature(pulsemarkerheatmap3);
+// set style for markers 
 pulsemarker1.setStyle(pulsemarkerstyle1);
 pulsemarker2.setStyle(pulsemarkerstyle2);
 pulsemarker3.setStyle(pulsemarkerstyle3);

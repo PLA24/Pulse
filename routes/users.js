@@ -84,7 +84,7 @@ router.post('/register', function(req, res) {
 
 
 });
-
+// check if the password is correct
 passport.use(new LocalStrategy(
   function(username, password, done) {
   User.getUserByUsername(username, function(err, user){
@@ -112,7 +112,7 @@ passport.use(new LocalStrategy(
     done(null, user);
   });
 
-
+// login request
 router.post('/login',
   passport.authenticate('local', {succesRedirect: '/', failureRedirect: '/users/login', failureFlash: true}),
   function(req, res) {
@@ -257,9 +257,5 @@ router.post('/reset/:token', function(req, res) {
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-
-
-
-
 
 module.exports = router;

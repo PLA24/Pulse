@@ -1,3 +1,4 @@
+// load layer for every township
 function currentLayer() {
     var cuLayer = getStoredValue('cLayer');
     if(cuLayer == 'amsterdam'){
@@ -8,12 +9,12 @@ function currentLayer() {
       return vectorGemeenteLayer;
     }
 }
-
+// get current date in proper format for current weather
 var mapdate = new Date();
 mapdate.setDate(mapdate.getDate() - 30)
 
 var curday = mapdate.getDate();
-var curmonth = mapdate.getMonth()+1; //January is 0!
+var curmonth = mapdate.getMonth()+1;
 var curyear = mapdate.getFullYear();
 
 if(curday<10) {
@@ -24,9 +25,8 @@ if(curmonth<10) {
 }
 
 mapdate = curyear + '_' + curmonth + '_'
-console.log(mapdate);
 
-
+//composition of the map with multiple layers
 var map = new ol.Map({
     layers: [
     //base layer van openstreet
@@ -42,14 +42,13 @@ var map = new ol.Map({
 
 
 
-    //gemeente layer
+    //township layer
     currentLayer(),
-    //pulse icon
+    //pulse icon layer
     vectorLayer
-
-    //Heatmap
   ],
-  //view eigenschappen
+
+  //properties of the map
   target: 'map',
   view: new ol.View({
     center: ol.proj.fromLonLat([5.498573, 52.165923]),
@@ -60,43 +59,28 @@ var map = new ol.Map({
   })
 });
 
-//eigenschappen van popup
-var element = document.getElementById('popup');
 
-var popup = new ol.Overlay({
-  element: element,
-  positioning: 'bottom-center',
-  stopEvent: false,
-  offset: [0, -50]
-});
-
-map.addOverlay(popup);
 var sensorname;
 
-testprint = 0;
-
-map.addOverlay(popup);
-// display popup on click
+// display popup on click and set correct data in modal
 map.on('click', function(evt) {
-  // $('#test').load('/map #test');
-  var feature1 = map.forEachFeatureAtPixel(evt.pixel,
-    function(feature1, layer) {
+  var clickPulseData = map.forEachFeatureAtPixel(evt.pixel,
+    function(clickPulseData, layer) {
       if (layer == vectorLayer) {
-        sensorname = feature1.get('name');
-        return feature1;
+        sensorname = clickPulseData.get('name');
+        return clickPulseData;
       }
     });
-
-  sensorname = feature1.get('name');
-  locatieID = feature1.get('locatieID');
-  tempcity = feature1.get('city');
+    // get current name, location, city from selected pulse marker
+  sensorname = clickPulseData.get('name');
+  locatieID = clickPulseData.get('locatieID');
+  tempcity = clickPulseData.get('city');
   console.log(sensorname);
   console.log("locatie ID " + locatieID);
 
   function update() {
   $.get("/map/mapdata/" + locatieID, function(data) {
     $("#test").html(data.AmountTotal);
-    console.log("hallooo" + testprint)
     DataChart.data.datasets[0].data[0] = 0;
     DataChart.data.datasets[0].data[1] = data.time01;
     DataChart.data.datasets[0].data[2] = data.time02;
@@ -108,40 +92,24 @@ map.on('click', function(evt) {
   }
   $.get("http://api.openweathermap.org/data/2.5/weather?q="+ tempcity + "&APPID=0cf54f43941aa1eefd04455a4a2593f9", function(data) {
     var tempcelsius = Math.round((data.main.temp - 273.15) * 100) / 100;
-    console.log(tempcelsius);
     $("#temp").html(tempcelsius);
   });
 
-
   update();
 
+  if (clickPulseData) {
 
-
-
-  if (feature1) {
-
-
-
-    //$('#test').load('/map' + ' #test');
-    sensorname = feature1.get('name');
+    sensorname = clickPulseData.get('name');
     document.getElementById("p1").innerHTML = sensorname;
-    //display modal
+    //display modal on click
     $('.ui.modal')
       .modal({
         blurring: true
       })
       .modal('show');
 
-    // var coordinates = feature1.getGeometry().getCoordinates();
-    // popup.setPosition(coordinates);
-    // $(element).popover({
-    //   'placement': 'top',
-    //   'html': true,
-    //   'content': feature1.get('name')
-    // });
-    // $(element).popover('show');
   } else {
-
+    //hide modal on click
     $('.ui.modal')
       .modal('hide');
     $(element).popover('destroy');
