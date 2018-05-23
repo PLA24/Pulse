@@ -125,7 +125,7 @@ var CarsInfo = {};
 
 /* get MAP page */
 router.get('/', ensureAuthenticated, function(req, res) {
-    res.render('map',{ title: 'Pulse', Cars: carAmount});
+    res.render('map',{ title: 'Pulse', currentUser: req.user.username, Cars: carAmount});
       datamodel.find( {date: { $eq: new Date('2018-02-01T14:35:00.000') }}).count({}, function( err, counttest){
         console.log( "Number of cars test:", counttest );
     });
