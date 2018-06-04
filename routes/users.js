@@ -32,6 +32,12 @@ router.get('/login', function(req, res) {
     layout: 'layoutempty'
   });
 });
+//settings
+router.get('/settings', function(req, res) {
+    res.render('settings', {
+        layout: 'layoutempty'
+    });
+});
 
 
 
@@ -248,10 +254,38 @@ router.post('/reset/:token', function(req, res) {
     );
 
 });
+// router.post(', function(req, res) {
+//     async.waterfall([
+//         function(done) {
+//             User.findOne({ email: req.body.email }, function(err, user) {
+//             }
+//         }
+//         ])
 //
 //
 //
 
+router.post('/settings', function(req, res) {
+    var username = req.body.username;
+    var email = req.body.email;
+    var township = req.body.township;
+    console.log(email + username + township);
+    // User.update(  { username:'Ziggy'} , { $set: { username :  'kaas'  } });
+    // console.log('updated');
+    User.find({ email: email }, function(err, user) {
+        console.log(email);
+        User.setPassword(req.body.email,user, function(err) {
+            user.setPassword(function(err) {
+                req.logIn(user, function(err) {
+                    done(err, user);
+                });
+            });
+        })
+        console.log('succes')
+        console.log(email)
+    });
+
+});
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
