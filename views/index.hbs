@@ -82,29 +82,6 @@
 
     <div class="ui horizontal segments">
 
-      <div class="ui segment" style="width:33%">
-        <h2 class="ui center aligned header">
-        <div class="content">
-          Brandstoffen van voertuigen
-          <div class="sub header">Vandaag</div>
-        </div>
-      </h2>
-        <canvas id="myPie2" width="400" height="400"></canvas>
-        <script>
-        console.log("HALLOOOOOO");
-        $.get("/fueldata", function(data) {
-          //$("#test").html(data.AmountTotal);
-          console.log("hallooo" + data)
-          myPieChart.data.datasets[0].data[0] = data.elektrisch;
-          myPieChart.data.datasets[0].data[1] = data.benzine;
-          myPieChart.data.datasets[0].data[2] = data.diesel;
-          myPieChart.data.datasets[0].data[3] = data.hybrid;
-          myPieChart.update();
-
-        });
-        </script>
-      </div>
-
       <div class="ui segment" style="width:66%">
         <h2 class="ui center aligned header">
         <div class="content">
@@ -148,7 +125,7 @@
           });
         </script>
 
-          //alle voertuigen
+          <!--alle voertuigen-->
         <script type="text/javascript">
         $.get("/graphdata01", function(data) {
           TopbarChart.data.datasets[0].data[0] = data.personenauto;
@@ -208,66 +185,56 @@
         </script>
       </div>
 
+      <div class="ui segment" style="width:33%">
+          <h2 class="ui center aligned header">
+          <div class="content">
+            Brandstoffen van voertuigen
+            <div class="sub header">Vandaag</div>
+          </div>
+        </h2>
+          <canvas id="myPie" width="400" height="400"></canvas>
+          <script>
+          console.log("HALLOOOOOO");
+          $.get("/fueldata", function(data) {
+            //$("#test").html(data.AmountTotal);
+            console.log("hallooo" + data)
+            myPieChart.data.datasets[0].data[0] = data.elektrisch;
+            myPieChart.data.datasets[0].data[1] = data.benzine;
+            myPieChart.data.datasets[0].data[2] = data.diesel;
+            myPieChart.data.datasets[0].data[3] = data.hybrid;
+            myPieChart.update();
+  
+          });
+          </script>
+        </div>
+
     </div>
 
     <div class="ui horizontal segments">
-      <div class="ui segment" style="width:66%">
-
-
-        <button class="ui button" onclick="setBarTownship();">Select</button>
-
-        <canvas id="myBar1"></canvas>
+      <div class="ui segment" style="width:33%">
+          <h2 class="ui center aligned header">
+              <div class="content">
+                Alle energielabels
+                <div class="sub header">vandaag</div>
+              </div>
+            </h2>
+        <canvas id="myPie2"></canvas>
         <script>
-          function setBarTownship() {
-            var townshipNr = $('#township').dropdown('get value');
-            console.log(townshipNr);
-            switch (townshipNr) {
-              case 0:
-                document.getElementById('myBar1').innerHTML = Chart(myBar1, {
-                  type: 'bar',
-                  data: {
-                    labels: ["12:00", "13:00", "14:00", "15:00", "16:00"],
-                    datasets: [{
-                      label: "Auto's",
-                      data: [100, 123, 134, 145, 170],
-                      backgroundColor: "#bf6788"
-                    }, {
-                      label: "Vrachtwagens",
-                      data: [120, 89, 89, 67, 45],
-                      backgroundColor: "#ffffff"
-                    }]
-                  },
-                  options: {
-                    legend: {
-                      position: 'bottom'
-                    }
-                  }
-                });
-                break;
-              case 1:
-                new Chart(myBar1, {
-                  type: 'bar',
-                  data: {
-                    labels: ["12:00", "13:00", "14:00", "15:00", "16:00"],
-                    datasets: [{
-                      label: "Personenauto's",
-                      data: [100, 123, 134, 145, 170],
-                      backgroundColor: "#bf76gg"
-                    }, {
-                      label: "Vrachtwagens",
-                      data: [120, 89, 89, 67, 20],
-                      backgroundColor: "#666666"
-                    }]
-                  },
-                  options: {
-                    legend: {
-                      position: 'bottom'
-                    }
-                  }
-                });
-                break;
+          var myPieChart2 = new Chart(myPie2, {
+            type: 'doughnut',
+            data: {
+              labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+              datasets: [{
+                data: [1, 2, 3, 4, 5, 6, 7],
+                backgroundColor: ['#f2190c', '#40fc19', '#146bd1', '#0b9e57', '#f97021', '#FBC60D', '#DC1D6C']
+              }]
+            },
+            options: {
+              legend: {
+                position: 'bottom'
+              }
             }
-          };
+          });
         </script>
         <script type="text/javascript">
           function getlivecountday() {
@@ -287,9 +254,18 @@
 
       </div>
 
+      <div class="ui segment" style="width:66%">
+          <h2 class="ui center aligned header">
+              <div class="content">
+                More Statitics
+                <div class="sub header">coming soon...</div>
+              </div>
+          </h2>
+      </div>
+
 
         <script>
-          var myPieChart = new Chart(myPie2, {
+          var myPieChart = new Chart(myPie, {
             type: 'doughnut',
             data: {
               labels: ['Elektrisch', 'Benzine', 'Diesel', 'Hybride'],
@@ -319,8 +295,24 @@
           });
         </script>
 
+        <script type="text/javascript">
+          $.get("/economylabeldata", function(data) {
+            console.log("hallooo" + data)
+            myPieChart2.data.datasets[0].data[0] = data.labelA;
+            myPieChart2.data.datasets[0].data[1] = data.labelB;
+            myPieChart2.data.datasets[0].data[2] = data.labelC;
+            myPieChart2.data.datasets[0].data[3] = data.labelD;
+            myPieChart2.data.datasets[0].data[4] = data.labelE;
+            myPieChart2.data.datasets[0].data[5] = data.labelF;
+            myPieChart2.data.datasets[0].data[6] = data.labelG;
+            myPieChart2.update();
+
+          });
+        </script>
+
 
       </div>
+
     </div>
 
   </div>
