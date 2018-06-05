@@ -23,8 +23,6 @@ router.get('/register', function(req, res) {
   res.render('register', {
     layout: 'layoutempty'
   });
-
-
 });
 //users
 router.get('/login', function(req, res) {
@@ -32,10 +30,6 @@ router.get('/login', function(req, res) {
     layout: 'layoutempty'
   });
 });
-
-
-
-
 //register users
 router.post('/register', function(req, res) {
   var username = req.body.username;
@@ -248,9 +242,158 @@ router.post('/reset/:token', function(req, res) {
     );
 
 });
-//
-//
-//
+// email reset settings screen
+router.post('/settings/email', function(req, res) {
+    // making user id
+    var _id = req.user._id;
+    async.waterfall([
+            function(done) {
+                //user id use
+                User.findOne({_id: req.user._id}, function(err, user) {
+                    if (!user) {
+                        req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    // check if value given is not the same as it was
+                    if(req.body.email !== req.user.email) {
+                        // sets email found on User.js
+                        User.setEmail(req.body.email,user, function(err) {
+                            user.save(function(err) {
+                                req.logIn(user, function(err) {
+                                    done(err, user);
+                                });
+                            });
+                        })
+                    } else {
+                        console.log('error flash');
+                        req.flash("error", "same email.");
+                        return res.redirect('back');
+                    }
+                });
+            },
+
+        ], function(err) {
+            if (err) return next(err);
+            res.redirect('/settings');
+
+        }
+    );
+
+});
+// township reset settings screen
+router.post('/settings/township', function(req, res) {
+    // making user id
+    var _id = req.user._id;
+    async.waterfall([
+            function(done) {
+                //user id use
+                User.findOne({_id: req.user._id}, function(err, user) {
+                    if (!user) {
+                        req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    // check if value given is not the same as it was
+                    if(req.body.township !== req.user.township) {
+                        // sets township found on User.js
+                        User.setTownship(req.body.township,user, function(err) {
+                            user.save(function(err) {
+                                req.logIn(user, function(err) {
+                                    done(err, user);
+                                });
+                            });
+                        })
+                    } else {
+                        console.log('error flash');
+                        req.flash("error", "same township.");
+                        return res.redirect('back');
+                    }
+                });
+            },
+
+        ], function(err) {
+            if (err) return next(err);
+            res.redirect('/settings');
+
+        }
+    );
+
+});
+// username reset settings screen
+router.post('/settings/username', function(req, res) {
+    // making user id
+    var _id = req.user._id;
+    async.waterfall([
+            function(done) {
+                //user id use
+                User.findOne({_id: req.user._id}, function(err, user) {
+                    if (!user) {
+                        req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    // check if value given is not the same as it was
+                    if(req.body.username !== req.user.username) {
+                        // sets username can be found on user.js
+                        User.setUsername(req.body.username,user, function(err) {
+                            user.save(function(err) {
+                                req.logIn(user, function(err) {
+                                    done(err, user);
+                                });
+                            });
+                        })
+                    } else {
+                        console.log('error flash');
+                        req.flash("error", "same username.");
+                        return res.redirect('back');
+                    }
+                });
+            },
+
+        ], function(err) {
+            if (err) return next(err);
+            res.redirect('/settings');
+
+        }
+    );
+
+});
+// password reset settings screen
+router.post('/settings/password', function(req, res) {
+    // making user id
+    var _id = req.user._id;
+    async.waterfall([
+            function(done) {
+                //user id use
+                User.findOne({_id: req.user._id}, function(err, user) {
+                    if (!user) {
+                        req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    // check if value given is not the same as it was
+                    if(req.body.password !== req.user.password) {
+                        User.setPassword(req.body.password,user, function(err) {
+                            // sets password can be found on user.js
+                            user.save(function(err) {
+                                req.logIn(user, function(err) {
+                                    done(err, user);
+                                });
+                            });
+                        })
+                    } else {
+                        console.log('error flash');
+                        req.flash("error", "same password.");
+                        return res.redirect('back');
+                    }
+                });
+            },
+
+        ], function(err) {
+            if (err) return next(err);
+            res.redirect('/settings');
+
+        }
+    );
+
+});
 
 
 /* GET users listing. */

@@ -851,13 +851,83 @@ router.get('/fueldata', function(req, res) {
             }
           }
         ]
+        }).count({}, function(err, count) {
+              console.log("Number of diesel cars:", count);
+              fuel.diesel = count.toString();
+      
+              datamodel2.find({
+                $and: [{
+                    economylabel: "G"
+                  },
+                  {
+                    timeSpotted: {
+                      $gte: new Date(today),
+                      $lt: new Date(todayplus)
+                    }
+                  }
+                ]          
+        }).count({}, function(err, count) {
+          console.log("Number of hybrid cars:", count);
+          fuel.hybrid = count.toString();
+          res.send(fuel);
+
+              });
+            });
+          });
+        });
+      });
+
+router.get('/economylabeldata', function(req, res) {
+  var economy = {};
+  datamodel2.find({
+    $and: [{
+        economylabel: "A"
+      },
+      {
+        timeSpotted: {
+          $gte: new Date(today),
+          $lt: new Date(todayplus)
+        }
+      }
+    ]
+  }).count({}, function(err, count) {
+    console.log("Number of elektric cars:", count);
+    economy.labelA = count.toString();
+
+    datamodel2.find({
+      $and: [{
+          economylabel: "B"
+        },
+        {
+          timeSpotted: {
+            $gte: new Date(today),
+            $lt: new Date(todayplus)
+          }
+        }
+      ]
+    }).count({}, function(err, count) {
+      console.log("Number of gasoline cars:", count);
+      economy.labelB = count.toString();
+      //res.send(fuel);
+
+      datamodel2.find({
+        $and: [{
+            economylabel: "C"
+          },
+          {
+            timeSpotted: {
+              $gte: new Date(today),
+              $lt: new Date(todayplus)
+            }
+          }
+        ]
       }).count({}, function(err, count) {
         console.log("Number of diesel cars:", count);
-        fuel.diesel = count.toString();
+        economy.labelC = count.toString();
 
         datamodel2.find({
           $and: [{
-              economylabel: "G"
+              economylabel: "D"
             },
             {
               timeSpotted: {
@@ -867,10 +937,58 @@ router.get('/fueldata', function(req, res) {
             }
           ]
         }).count({}, function(err, count) {
+          console.log("Number of diesel cars:", count);
+          economy.labelD = count.toString();
+  
+          datamodel2.find({
+            $and: [{
+                economylabel: "E"
+              },
+              {
+                timeSpotted: {
+                  $gte: new Date(today),
+                  $lt: new Date(todayplus)
+                }
+              }
+            ]  
+          }).count({}, function(err, count) {
+            console.log("Number of diesel cars:", count);
+            economy.labelE = count.toString();
+    
+            datamodel2.find({
+              $and: [{
+                  economylabel: "F"
+                },
+                {
+                  timeSpotted: {
+                    $gte: new Date(today),
+                    $lt: new Date(todayplus)
+                  }
+                }
+              ]  
+            }).count({}, function(err, count) {
+              console.log("Number of diesel cars:", count);
+              economy.labelF = count.toString();
+      
+              datamodel2.find({
+                $and: [{
+                    economylabel: "G"
+                  },
+                  {
+                    timeSpotted: {
+                      $gte: new Date(today),
+                      $lt: new Date(todayplus)
+                    }
+                  }
+                ]          
+        }).count({}, function(err, count) {
           console.log("Number of hybrid cars:", count);
-          fuel.hybrid = count.toString();
-          res.send(fuel);
+          economy.labelG = count.toString();
+          res.send(economy);
 
+              });
+            });
+          });
         });
       });
     });
