@@ -32,6 +32,11 @@
         align-self: center;
         margin: 0 auto;
     }
+    #rightalignDiv{
+      align-self: center;
+      margin-right: 0;
+
+    }
 </style>
 
 <body>
@@ -47,12 +52,24 @@
             </div>
         </div>
     </div>
+    <div id="rightalignDiv">
+      <button class="ui right labeled icon button" onclick="testfunction()">
 
+  <i class="fire icon"></i>
+  toggle heatamp
+</button>
+    </div>
   </div>
   <div id="map" class="map" style="z-index: 0"></div>
   <!-- <div id="popup"></div> -->
 </body>
 <script>
+
+  function testfunction() {
+    Heatmap.setVisible(!Heatmap.getVisible());
+  }
+
+
     var cLayer = '';
     $('.ui.dropdown')
             .dropdown();
@@ -86,7 +103,6 @@
 
 </script>
 <script src="/javascripts/openlayerComp.js"></script>
-
 <body>
   <div class="ui tiny modal" id="infoscreen">
     <i class="close icon">

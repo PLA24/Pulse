@@ -11,7 +11,7 @@ function currentLayer() {
 }
 // get current date in proper format for current weather
 var mapdate = new Date();
-mapdate.setDate(mapdate.getDate() - 30)
+mapdate.setDate(mapdate.getDate() - 60)
 
 var curday = mapdate.getDate();
 var curmonth = mapdate.getMonth()+1;
@@ -44,6 +44,8 @@ var map = new ol.Map({
 
     //township layer
     currentLayer(),
+
+    Heatmap,
     //pulse icon layer
     vectorLayer
   ],

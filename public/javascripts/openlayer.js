@@ -51,7 +51,8 @@ var pulsemarker3 = new ol.Feature({
 var pulsemarkerheatmap1 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.908942, 52.359899])),
   name: 'Amsterdam',
-  locatieID: 1
+  locatieID: 1,
+  testvalue: 100
 
 
 });
@@ -59,7 +60,8 @@ var pulsemarkerheatmap1 = new ol.Feature({
 var pulsemarkerheatmap2 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([4.477733, 51.924420])),
   name: 'Rotterdam',
-  locatieID: 2
+  locatieID: 2,
+  testvalue: 40
 
 
 });
@@ -67,7 +69,8 @@ var pulsemarkerheatmap2 = new ol.Feature({
 var pulsemarkerheatmap3 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([5.471422, 52.518537])),
   name: 'Lelystad',
-  locatieID: 3
+  locatieID: 3,
+  testvalue: 70
 
 
 });
@@ -107,7 +110,7 @@ var pulsemarkerstyle3= new ol.style.Style({
 data.addFeature(pulsemarkerheatmap1);
 data.addFeature(pulsemarkerheatmap2);
 data.addFeature(pulsemarkerheatmap3);
-// set style for markers 
+// set style for markers
 pulsemarker1.setStyle(pulsemarkerstyle1);
 pulsemarker2.setStyle(pulsemarkerstyle2);
 pulsemarker3.setStyle(pulsemarkerstyle3);
@@ -170,7 +173,21 @@ var vectorGemeenteLayer = new ol.layer.Vector({
 // heatmap layer WIP
 var Heatmap = new ol.layer.Heatmap({
      source: data ,
-     radius: data.getFeatures('locatieID')
+     radius: 30,
+      weight: function(feature){
+    //     // get your feature property
+         var locatieIDheatmap = feature.get('locatieID');
+         var heatmapamount;
+         $.get("/map/mapdata/" + locatieIDheatmap, function(data) {
+           heatmapamount = data.AmountTotal/10000;
+           });
+
+         //var weightProperty = feature.get('testvalue');
+         var weightProperty = heatmapamount;
+         // perform some calculation to get weightProperty between 0 - 1
+         //weightProperty = weightProperty /1569; // this was your suggestion - make sure this makes sense
+         return weightProperty;
+     }
  });
 
 
