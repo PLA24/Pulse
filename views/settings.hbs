@@ -37,45 +37,64 @@
     </style>
 
     <script>
-
+        $('#saveButton').change(function () {
+            $('#testTextfield').attr('disabled',!this.checked);
+            //$('#test').attr('disabled',!this.checked);
+        });
     </script>
 
 </head>
 
 <body>
-
+<!--Comments-->
 <div class="ui grid">
-    <form class="ui large form" method="post" action="/users/settings">
     <div class="twelve wide stretched column">
         <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1></center>
-
+        <!--Comments-->
         <div class="ui container" id = "settings">
+            <!--Comments-->
+            <form class="ui large form" method="post" action="/users/settings/username">
             <label>Username</label>
             <div class="ui input">
-                <input type="text" name="username" value="{{UserName}}">
-            </div>
+                <input type="text" name="username" id="testTextfield" value="{{UserName}}" disabled>
+                <button class="ui blue submit button" id="editUsername">Edit</button>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" name="saveButton" id="saveButton" tabindex="0" class="hidden">
+                    <label>edit</label>
+                </div>
+                </div>
+            </form>
             <p></p>
+            <!--Comments-->
+            <form class="ui large form" method="post" action="/users/settings/email">
             <label>E-mail</label>
             <div class="ui input">
-                <input type="text" name="email" value="{{Email}}">
+                <input type="text" name="email" value="{{Email}}" disabled >
+                <button class="ui blue submit button" id="editEmail">Edit</button>
             </div>
+            </form>
             <p></p>
+            <!--Comments-->
+            <form class="ui large form" method="post" action="/users/settings/password">
             <label>Password</label>
             <div class="ui input">
                 <input type="password" name="password" value="{{Password}}">
+                <button class="ui blue submit button" id="editPassword">Edit</button>
             </div>
+            </form>
             <p></p>
+            <!--Comments-->
+            <form class="ui large form" method="post" action="/users/settings/township">
             <label>Township</label>
                 <div class="ui input">
                 <input type="text" name="township" value="{{Township}}">
+                    <button class="ui blue submit button" id="editTownship">Edit</button>
                 </div>
+            </form>
             <p></p>
-                <button class="ui blue submit button" id="edit">Edit</button>
-                </div>
         </div>
-    </form>
+        </div>
     </div>
-
 </body>
 
 

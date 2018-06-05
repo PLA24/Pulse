@@ -67,17 +67,15 @@ module.exports.setPassword = function(newPassword, user, callback){
         });
     });
 }
-
-
-
-module.exports.setEmail = function(newEmail, user, callback){
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(newEmail, salt, function(err, hash) {
-            user.password = hash;
-            user.save(callback);
-        });
-    });
+module.exports.setEmail = function(newEmail, user, callback,) {
+    user.email = newEmail;
+    user.save(callback);
 }
-module.exports.setTownship = function (newTownship, user, callback) {
+module.exports.setTownship = function(newTownship, user, callback,) {
+    user.township = newTownship;
+    user.save(callback);
+}
+module.exports.setUsername = function(newUsername, user, callback,) {
+    user.username = newUsername;
     user.save(callback);
 }
