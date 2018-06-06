@@ -120,13 +120,11 @@ router.get('/logout', function(req, res,){
 
     res.redirect('/homepage')
 });
-//
-//
 // forgot password
 router.get("/", function(req, res) {
     res.render('forgot');
 });
-
+//forgot password
 router.post('/forgot', function(req, res, next) {
     async.waterfall([
         function(done) {
@@ -178,7 +176,7 @@ router.post('/forgot', function(req, res, next) {
         res.redirect('/forgot');
     });
 });
-
+// reset password
 router.get('/reset/:token', function(req, res) {
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
@@ -188,7 +186,7 @@ router.get('/reset/:token', function(req, res) {
          res.render('reset');
     });
 });
-
+//reset password
 router.post('/reset/:token', function(req, res) {
     async.waterfall([
         function(done) {
@@ -254,6 +252,11 @@ router.post('/settings/email', function(req, res) {
                         req.flash('error', 'how were you able to get here??');
                         return res.redirect('back');
                     }
+                    if(!req.body.email) {
+                        console.log('empty field');
+                        req.flash('error', 'no data');
+                        return res.redirect('back');
+                    }
                     // check if value given is not the same as it was
                     if(req.body.email !== req.user.email) {
                         // sets email found on User.js
@@ -290,6 +293,11 @@ router.post('/settings/township', function(req, res) {
                 User.findOne({_id: req.user._id}, function(err, user) {
                     if (!user) {
                         req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    if(!req.body.township) {
+                        console.log('empty field');
+                        req.flash('error', 'no data');
                         return res.redirect('back');
                     }
                     // check if value given is not the same as it was
@@ -330,6 +338,11 @@ router.post('/settings/username', function(req, res) {
                         req.flash('error', 'how were you able to get here??');
                         return res.redirect('back');
                     }
+                    if(!req.body.username) {
+                        console.log('empty field');
+                        req.flash('error', 'no data');
+                        return res.redirect('back');
+                    }
                     // check if value given is not the same as it was
                     if(req.body.username !== req.user.username) {
                         // sets username can be found on user.js
@@ -366,6 +379,11 @@ router.post('/settings/password', function(req, res) {
                 User.findOne({_id: req.user._id}, function(err, user) {
                     if (!user) {
                         req.flash('error', 'how were you able to get here??');
+                        return res.redirect('back');
+                    }
+                    if(!req.body.password) {
+                        console.log('empty field');
+                        req.flash('error', 'no data');
                         return res.redirect('back');
                     }
                     // check if value given is not the same as it was

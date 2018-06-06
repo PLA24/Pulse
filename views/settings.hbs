@@ -15,87 +15,144 @@
             margin-left: 10%;
         }
         .input {
+            display: inline-block;
+            float: right;
+            clear: right;
+            width: 250px;
             text-align: right;
-            float: right;
-            clear: right;
-            width: 250px;
         }
-        #edit{
-            float: right;
-            clear: right;
+        label{
+            float: left;
+            clear: left;
             width: 250px;
+            text-align: left;
+            font-size: x-large;
+            font-family: "Arial Black";
         }
-
-
-
+        .button{
+            width: 100px;
+        }
     </style>
     <style media="screen">
         #settings{
             margin-top: 100px;
         }
-
     </style>
-
-    <script>
-        $('#saveButton').change(function () {
-            $('#testTextfield').attr('disabled',!this.checked);
-            //$('#test').attr('disabled',!this.checked);
-        });
+    <script type="text/javascript">
+        $(function () {
+            $('#usernameCheck').change(function () {
+                var st = this.checked;
+                if(st) {
+                    $('#usernameText').prop('disabled', false);
+                }
+                else{
+                    $('#usernameText').prop('disabled', true);
+                }
+            })
+        })
+        $(function () {
+            $('#emailCheck').change(function () {
+                var st = this.checked;
+                if(st) {
+                    $('#emailText').prop('disabled', false);
+                }
+                else{
+                    $('#emailText').prop('disabled', true);
+                }
+            })
+        })
+        $(function () {
+            $('#passwordCheck').change(function () {
+                var st = this.checked;
+                if(st) {
+                    $('#passwordText').prop('disabled', false);
+                }
+                else{
+                    $('#passwordText').prop('disabled', true);
+                }
+            })
+        })
+        $(function () {
+            $('#townshipCheck').change(function () {
+                var st = this.checked;
+                if(st) {
+                    $('#townshipText').prop('disabled', false);
+                }
+                else{
+                    $('#townshipText').prop('disabled', true);
+                }
+            })
+        })
     </script>
-
 </head>
-
 <body>
 <!--Comments-->
 <div class="ui grid">
-    <div class="twelve wide stretched column">
-        <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1></center>
+        <div class="twelve wide stretched column">
+            <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1>
+            <br>
         <!--Comments-->
-        <div class="ui container" id = "settings">
             <!--Comments-->
-            <form class="ui large form" method="post" action="/users/settings/username">
-            <label>Username</label>
-            <div class="ui input">
-                <input type="text" name="username" id="testTextfield" value="{{UserName}}" disabled>
-                <button class="ui blue submit button" id="editUsername">Edit</button>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="saveButton" id="saveButton" tabindex="0" class="hidden">
-                    <label>edit</label>
-                </div>
-                </div>
+             <form class="ui large form" method="post" action="/users/settings/username">
+                    <label for="inputUsername">Username</label>
+                 <div class="ui input">
+                     <input id="usernameText" type="text" name="username" value="{{UserName}}" disabled>
+                     <button class="ui blue submit button" id="editUsername">Save</button>
+                    <div class="column">
+                        <div class="ui test toggle checkbox">
+                            <input id="usernameCheck" type="checkbox" >
+                            <label>edit</label>
+                         </div>
+                    </div>
+                 </div>
             </form>
-            <p></p>
+            <br>
             <!--Comments-->
             <form class="ui large form" method="post" action="/users/settings/email">
-            <label>E-mail</label>
+                <label for="inputEmail">Email</label>
             <div class="ui input">
-                <input type="text" name="email" value="{{Email}}" disabled >
-                <button class="ui blue submit button" id="editEmail">Edit</button>
+                <input id="emailText" type="text" name="email" value="{{Email}}" disabled>
+                <button class="ui blue submit button" id="editEmail">Save</button>
+                <div class="column">
+                    <div class="ui test toggle checkbox">
+                        <input id="emailCheck" type="checkbox" >
+                        <label>edit</label>
+                    </div>
+                </div>
             </div>
             </form>
-            <p></p>
+            <br>
             <!--Comments-->
             <form class="ui large form" method="post" action="/users/settings/password">
             <label>Password</label>
             <div class="ui input">
-                <input type="password" name="password" value="{{Password}}">
-                <button class="ui blue submit button" id="editPassword">Edit</button>
+                <input id="passwordText" type="password" name="password" value="{{Password}}" disabled>
+                <button class="ui blue submit button" id="editPassword">Save</button>
+                <div class="column">
+                    <div class="ui test toggle checkbox">
+                        <input id="passwordCheck" type="checkbox" >
+                        <label>edit</label>
+                    </div>
+                </div>
             </div>
             </form>
-            <p></p>
+            <br>
             <!--Comments-->
             <form class="ui large form" method="post" action="/users/settings/township">
             <label>Township</label>
                 <div class="ui input">
-                <input type="text" name="township" value="{{Township}}">
-                    <button class="ui blue submit button" id="editTownship">Edit</button>
+                <input id="townshipText" type="text" name="township" value="{{Township}}" disabled>
+                    <button class="ui blue submit button" id="editTownship">Save</button>
+                    <div class="column">
+                        <div class="ui test toggle checkbox">
+                            <input id="townshipCheck" type="checkbox" >
+                            <label>edit</label>
+                        </div>
+                    </div>
                 </div>
             </form>
-            <p></p>
-        </div>
+            <br>
         </div>
     </div>
 </body>
-
-
 </html>
