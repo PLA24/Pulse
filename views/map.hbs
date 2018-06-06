@@ -53,10 +53,10 @@
         </div>
     </div>
     <div id="rightalignDiv">
-      <button class="ui right labeled icon button" onclick="testfunction()">
+      <button class="ui right labeled icon button" onclick="heatmaptoggle()">
 
   <i class="fire icon"></i>
-  toggle heatamp
+  toggle heatmap
 </button>
     </div>
   </div>
@@ -64,8 +64,8 @@
   <!-- <div id="popup"></div> -->
 </body>
 <script>
-
-  function testfunction() {
+  Heatmap.setVisible(false);
+  function heatmaptoggle() {
     Heatmap.setVisible(!Heatmap.getVisible());
   }
 
@@ -127,6 +127,10 @@
               Current temperature in celsius
                   <p style="display:inline" id="temp"><b>TEMP AMOUNT</b></p>
           </div>
+          <div class="content">
+            Current weather status
+                <p style="display:inline" id="tempdescription"><b>TEMP AMOUNT</b></p>
+        </div>
           </div>
         </div>
 
@@ -140,7 +144,7 @@
       data: {
         labels: [0 + " uur",6 + " uur",12 + " uur",18 + " uur",24 + " uur"],
         datasets: [{
-            data: [0, 300, 400, 500],
+            data: [0, 300, 400, 500, 10],
             label: "aantal auto's per 6 uur",
             borderColor: "#3e95cd",
             fill: true

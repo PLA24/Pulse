@@ -811,7 +811,7 @@ router.get('/fueldata', function(req, res) {
   var fuel = {};
   datamodel2.find({
     $and: [{
-        economylabel: "A"
+        brand: "VOLKSWAGEN"
       },
       {
         timeSpotted: {
@@ -826,7 +826,7 @@ router.get('/fueldata', function(req, res) {
 
     datamodel2.find({
       $and: [{
-          economylabel: "B"
+          brand: "RENAULT"
         },
         {
           timeSpotted: {
@@ -842,7 +842,7 @@ router.get('/fueldata', function(req, res) {
 
       datamodel2.find({
         $and: [{
-            economylabel: "C"
+            brand: "OPEL"
           },
           {
             timeSpotted: {
@@ -854,10 +854,10 @@ router.get('/fueldata', function(req, res) {
         }).count({}, function(err, count) {
               console.log("Number of diesel cars:", count);
               fuel.diesel = count.toString();
-      
+
               datamodel2.find({
                 $and: [{
-                    economylabel: "G"
+                    brand: "PEUGEOT"
                   },
                   {
                     timeSpotted: {
@@ -865,11 +865,90 @@ router.get('/fueldata', function(req, res) {
                       $lt: new Date(todayplus)
                     }
                   }
-                ]          
+                ]
         }).count({}, function(err, count) {
           console.log("Number of hybrid cars:", count);
           fuel.hybrid = count.toString();
-          res.send(fuel);
+
+          datamodel2.find({
+            $and: [{
+                brand: "AUDI"
+              },
+              {
+                timeSpotted: {
+                  $gte: new Date(today),
+                  $lt: new Date(todayplus)
+                }
+              }
+            ]
+    }).count({}, function(err, count) {
+      console.log("Number of audi cars:", count);
+      fuel.audi = count.toString();
+      datamodel2.find({
+        $and: [{
+            brand: "FERRARI"
+          },
+          {
+            timeSpotted: {
+              $gte: new Date(today),
+              $lt: new Date(todayplus)
+            }
+          }
+        ]
+    }).count({}, function(err, count) {
+    console.log("Number of ferrari cars:", count);
+    fuel.ferrari = count.toString();
+
+    datamodel2.find({
+      $and: [{
+          brand: "BMW"
+        },
+        {
+          timeSpotted: {
+            $gte: new Date(today),
+            $lt: new Date(todayplus)
+          }
+        }
+      ]
+}).count({}, function(err, count) {
+console.log("Number of BMW cars:", count);
+fuel.bmw = count.toString();
+
+datamodel2.find({
+  $and: [{
+      brand: "CITROEN"
+    },
+    {
+      timeSpotted: {
+        $gte: new Date(today),
+        $lt: new Date(todayplus)
+      }
+    }
+  ]
+}).count({}, function(err, count) {
+console.log("Number of cintroen cars:", count);
+fuel.citroen = count.toString();
+
+
+
+res.send(fuel);
+
+});
+
+//res.send(fuel);
+
+    });
+
+    //res.send(fuel);
+
+      });
+
+
+      //res.send(fuel);
+
+          });
+
+          //res.send(fuel);
 
               });
             });
@@ -939,7 +1018,7 @@ router.get('/economylabeldata', function(req, res) {
         }).count({}, function(err, count) {
           console.log("Number of diesel cars:", count);
           economy.labelD = count.toString();
-  
+
           datamodel2.find({
             $and: [{
                 economylabel: "E"
@@ -950,11 +1029,11 @@ router.get('/economylabeldata', function(req, res) {
                   $lt: new Date(todayplus)
                 }
               }
-            ]  
+            ]
           }).count({}, function(err, count) {
             console.log("Number of diesel cars:", count);
             economy.labelE = count.toString();
-    
+
             datamodel2.find({
               $and: [{
                   economylabel: "F"
@@ -965,11 +1044,11 @@ router.get('/economylabeldata', function(req, res) {
                     $lt: new Date(todayplus)
                   }
                 }
-              ]  
+              ]
             }).count({}, function(err, count) {
               console.log("Number of diesel cars:", count);
               economy.labelF = count.toString();
-      
+
               datamodel2.find({
                 $and: [{
                     economylabel: "G"
@@ -980,7 +1059,7 @@ router.get('/economylabeldata', function(req, res) {
                       $lt: new Date(todayplus)
                     }
                   }
-                ]          
+                ]
         }).count({}, function(err, count) {
           console.log("Number of hybrid cars:", count);
           economy.labelG = count.toString();

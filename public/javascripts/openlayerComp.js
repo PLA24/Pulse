@@ -95,6 +95,9 @@ map.on('click', function(evt) {
   $.get("http://api.openweathermap.org/data/2.5/weather?q="+ tempcity + "&APPID=0cf54f43941aa1eefd04455a4a2593f9", function(data) {
     var tempcelsius = Math.round((data.main.temp - 273.15) * 100) / 100;
     $("#temp").html(tempcelsius);
+    console.log(data.weather[0].description);
+    console.log(data.main);
+    $("#tempdescription").html(data.weather[0].description);
   });
 
   update();

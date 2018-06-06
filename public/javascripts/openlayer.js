@@ -55,6 +55,7 @@ var pulsemarkerheatmap1 = new ol.Feature({
   testvalue: 100
 
 
+
 });
 
 var pulsemarkerheatmap2 = new ol.Feature({
@@ -97,7 +98,7 @@ var pulsemarkerstyle2 = new ol.style.Style({
   }))
 });
 
-var pulsemarkerstyle3= new ol.style.Style({
+var pulsemarkerstyle3 = new ol.style.Style({
   image: new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
     scale: 0.5,
     anchor: [0.5, 46],
@@ -126,32 +127,32 @@ var vectorLayer = new ol.layer.Vector({
 
 //amsterdam layer
 var vectorAmsterdamLayer = new ol.layer.Vector({
-    source: new ol.source.Vector({
-        url: '/geojson/amsterdam.geojson',
-        format: new ol.format.GeoJSON()
+  source: new ol.source.Vector({
+    url: '/geojson/amsterdam.geojson',
+    format: new ol.format.GeoJSON()
 
 
-    }),
-    style: function(feature) {
-        style.getText().setText(feature.get('name'));
-        return style;
+  }),
+  style: function(feature) {
+    style.getText().setText(feature.get('name'));
+    return style;
 
-    }
+  }
 });
 
 //rotterdam layer
 var vectorRotterdamLayer = new ol.layer.Vector({
-    source: new ol.source.Vector({
-        url: '/geojson/rotterdam.geojson',
-        format: new ol.format.GeoJSON()
+  source: new ol.source.Vector({
+    url: '/geojson/rotterdam.geojson',
+    format: new ol.format.GeoJSON()
 
 
-    }),
-    style: function(feature) {
-        style.getText().setText(feature.get('name'));
-        return style;
+  }),
+  style: function(feature) {
+    style.getText().setText(feature.get('name'));
+    return style;
 
-    }
+  }
 });
 
 //gemeente layer
@@ -172,23 +173,35 @@ var vectorGemeenteLayer = new ol.layer.Vector({
 
 // heatmap layer WIP
 var Heatmap = new ol.layer.Heatmap({
-     source: data ,
-     radius: 30,
-      weight: function(feature){
+  source: data,
+  radius: 30,
+  weight: function(feature) {
     //     // get your feature property
-         var locatieIDheatmap = feature.get('locatieID');
-         var heatmapamount;
-         $.get("/map/mapdata/" + locatieIDheatmap, function(data) {
-           heatmapamount = data.AmountTotal/10000;
-           });
+    var locatieIDheatmap = feature.get('locatieID');
+    var heatmapamount = 0.1;
+    var kaas = 0;
 
-         //var weightProperty = feature.get('testvalue');
-         var weightProperty = heatmapamount;
-         // perform some calculation to get weightProperty between 0 - 1
-         //weightProperty = weightProperty /1569; // this was your suggestion - make sure this makes sense
-         return weightProperty;
-     }
- });
+
+
+
+    function heatmapdata() {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("GET", "/map/mapdata/" + locatieIDheatmap, false); // false for synchronous request
+      xmlHttp.send(null);
+      console.log(xmlHttp.responseText);
+      var valuetest = JSON.parse(xmlHttp.responseText);
+      console.log(valuetest.AmountTotal);
+      return valuetest.AmountTotal;
+    }
+
+
+    //var weightProperty = feature.get('testvalue');
+    var weightProperty = heatmapdata() / 40; //feature.get('locatieID')/10;
+    // perform some calculation to get weightProperty between 0 - 1
+    //weightProperty = weightProperty /1569; // this was your suggestion - make sure this makes sense
+    return weightProperty;
+  }
+});
 
 
 console.log(name);

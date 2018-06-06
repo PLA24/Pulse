@@ -64,8 +64,8 @@ router.get('/mapdata/:id', function(req, res) {
         },
         {
           timeSpotted: {
-            $gte: new Date(today + "T00:00:00.000Z"),
-            $lt: new Date(today + "T06:00:00.000Z")
+            $gte: new Date(today + "T00:00:00.000"),
+            $lt: new Date(today + "T06:00:00.000")
           }
         }
       ]
@@ -80,8 +80,8 @@ router.get('/mapdata/:id', function(req, res) {
           },
           {
             timeSpotted: {
-              $gte: new Date(today + "T06:00:00.000Z"),
-              $lt: new Date(today + "T12:00:00.000Z")
+              $gte: new Date(today + "T06:00:00.000"),
+              $lt: new Date(today + "T12:00:00.000")
             }
           }
         ]
@@ -95,8 +95,8 @@ router.get('/mapdata/:id', function(req, res) {
             },
             {
               timeSpotted: {
-                $gte: new Date(today + "T12:00:00.000Z"),
-                $lt: new Date(today + "T18:00:00.000Z")
+                $gte: new Date(today + "T12:00:00.000"),
+                $lt: new Date(today + "T18:00:00.000")
               }
             }
           ]
@@ -110,14 +110,14 @@ router.get('/mapdata/:id', function(req, res) {
                 siteSpotted: "Pulse" + locatieID
               },
               {
-                siteSpotted: {
-                  $gte: new Date(today + "T18:00:00.000Z"),
-                  $lt: new Date(today + "T24:00:00.000Z")
+                timeSpotted: {
+                  $gte: new Date(today + "T18:00:00.000"),
+                  $lt: new Date(today + "T24:00:00.000")
                 }
               }
             ]
           }).count({}, function(err, count) {
-
+            console.log("dit is het aantal autos tussen 18 en 24 test" + count);
             CarsInfo.time04 = count;
             res.send(CarsInfo);
 

@@ -188,7 +188,7 @@
       <div class="ui segment" style="width:33%">
           <h2 class="ui center aligned header">
           <div class="content">
-            Brandstoffen van voertuigen
+            Verdeling van 4 meest gebruikte merken
             <div class="sub header">Vandaag</div>
           </div>
         </h2>
@@ -203,7 +203,7 @@
             myPieChart.data.datasets[0].data[2] = data.diesel;
             myPieChart.data.datasets[0].data[3] = data.hybrid;
             myPieChart.update();
-  
+
           });
           </script>
         </div>
@@ -268,10 +268,10 @@
           var myPieChart = new Chart(myPie, {
             type: 'doughnut',
             data: {
-              labels: ['Elektrisch', 'Benzine', 'Diesel', 'Hybride'],
+              labels: ['Volkswagen', 'Renault', 'Opel', 'Peugeot', 'Audi', 'Ferrari', 'Dikke BMW', 'Citroën'],
               datasets: [{
                 data: [34, 46, 54, 44],
-                backgroundColor: ['#ff6666', '#6666ff', '#66ff66', '#ff66ff']
+                backgroundColor: ['#ff6666', '#6666ff', '#66ff66', '#ff66ff', '#9933ff', '#cc0066', '#0000cc', '#666699']
               }]
             },
             options: {
@@ -290,6 +290,10 @@
             myPieChart.data.datasets[0].data[1] = data.benzine;
             myPieChart.data.datasets[0].data[2] = data.diesel;
             myPieChart.data.datasets[0].data[3] = data.hybrid;
+            myPieChart.data.datasets[0].data[4] = data.audi;
+            myPieChart.data.datasets[0].data[5] = data.ferrari;
+            myPieChart.data.datasets[0].data[6] = data.bmw;
+            myPieChart.data.datasets[0].data[7] = data.citroen;
             myPieChart.update();
 
           });
