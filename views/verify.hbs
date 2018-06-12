@@ -69,21 +69,21 @@
         </div>
         <div class="ui inverted image header">
             <div class="content">
-                <h2>Reset your password</h2>
+                <h2>Confirm your E-mail</h2>
             </div>
         </div>
-        <form class="ui large form" method="post" action="/users/forgot">
+        <form class="ui large form" method="post">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="form-group">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="email" placeholder="E-mail">
+                            <input type="text" id="confirmToken" name="confirmToken" placeholder="confirmToken">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="ui fluid large blue submit button">Reset</div>
+                    <div class="ui fluid large blue submit button">Confirm</div>
                 </div>
             </div>
         </form>

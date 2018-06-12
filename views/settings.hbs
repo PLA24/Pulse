@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <title>Settings</title>
 
-    <link rel='stylesheet' href='/stylesheets/settings.css' />
-    <link rel="stylesheet" href="/semantic/dist/semantic.css" />
+    <link rel='stylesheet' href='/stylesheets/settings.css'/>
+    <link rel="stylesheet" href="/semantic/dist/semantic.css"/>
 
     <style type="text/css">
         body {
             margin-top: 1%;
             margin-left: 10%;
         }
+
         .input {
             display: inline-block;
             float: right;
@@ -21,7 +23,8 @@
             width: 250px;
             text-align: right;
         }
-        label{
+
+        label {
             float: left;
             clear: left;
             width: 250px;
@@ -29,12 +32,13 @@
             font-size: x-large;
             font-family: "Arial Black";
         }
-        .button{
+
+        .button {
             width: 100px;
         }
     </style>
     <style media="screen">
-        #settings{
+        #settings {
             margin-top: 100px;
         }
     </style>
@@ -42,10 +46,10 @@
         $(function () {
             $('#usernameCheck').change(function () {
                 var st = this.checked;
-                if(st) {
+                if (st) {
                     $('#usernameText').prop('disabled', false);
                 }
-                else{
+                else {
                     $('#usernameText').prop('disabled', true);
                 }
             })
@@ -53,10 +57,10 @@
         $(function () {
             $('#emailCheck').change(function () {
                 var st = this.checked;
-                if(st) {
+                if (st) {
                     $('#emailText').prop('disabled', false);
                 }
-                else{
+                else {
                     $('#emailText').prop('disabled', true);
                 }
             })
@@ -64,10 +68,10 @@
         $(function () {
             $('#passwordCheck').change(function () {
                 var st = this.checked;
-                if(st) {
+                if (st) {
                     $('#passwordText').prop('disabled', false);
                 }
-                else{
+                else {
                     $('#passwordText').prop('disabled', true);
                 }
             })
@@ -75,10 +79,10 @@
         $(function () {
             $('#townshipCheck').change(function () {
                 var st = this.checked;
-                if(st) {
+                if (st) {
                     $('#townshipText').prop('disabled', false);
                 }
-                else{
+                else {
                     $('#townshipText').prop('disabled', true);
                 }
             })
@@ -88,71 +92,71 @@
 <body>
 <!--Comments-->
 <div class="ui grid">
-        <div class="twelve wide stretched column">
-            <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1>
-            <br>
+    <div class="twelve wide stretched column">
+        <h1 class="ui header" id="titel"><i class="wrench icon"></i>Settings</h1>
+        <br>
         <!--Comments-->
-            <!--Comments-->
-             <form class="ui large form" method="post" action="/users/settings/username">
-                    <label for="inputUsername">Username</label>
-                 <div class="ui input">
-                     <input id="usernameText" type="text" name="username" value="{{UserName}}" disabled>
-                     <button class="ui blue submit button" id="editUsername">Save</button>
-                    <div class="column">
-                        <div class="ui test toggle checkbox">
-                            <input id="usernameCheck" type="checkbox" >
-                            <label>edit</label>
-                         </div>
+        <!--Comments-->
+        <form class="ui large form" method="post" action="/users/settings/username">
+            <label for="inputUsername">Username</label>
+            <div class="ui input">
+                <input id="usernameText" type="text" name="username" value="{{UserName}}" disabled>
+                <button class="ui blue submit button" id="editUsername">Save</button>
+                <div class="column">
+                    <div class="ui test toggle checkbox">
+                        <input id="usernameCheck" type="checkbox">
+                        <label>edit</label>
                     </div>
-                 </div>
-            </form>
-            <br>
-            <!--Comments-->
-            <form class="ui large form" method="post" action="/users/settings/email">
-                <label for="inputEmail">Email</label>
+                </div>
+            </div>
+        </form>
+        <br>
+        <!--Comments-->
+        <form class="ui large form" method="post" action="/users/settings/email">
+            <label for="inputEmail">Email</label>
             <div class="ui input">
                 <input id="emailText" type="text" name="email" value="{{Email}}" disabled>
                 <button class="ui blue submit button" id="editEmail">Save</button>
                 <div class="column">
                     <div class="ui test toggle checkbox">
-                        <input id="emailCheck" type="checkbox" >
+                        <input id="emailCheck" type="checkbox">
                         <label>edit</label>
                     </div>
                 </div>
             </div>
-            </form>
-            <br>
-            <!--Comments-->
-            <form class="ui large form" method="post" action="/users/settings/password">
+        </form>
+        <br>
+        <!--Comments-->
+        <form class="ui large form" method="post" action="/users/settings/password">
             <label>Password</label>
             <div class="ui input">
                 <input id="passwordText" type="password" name="password" value="{{Password}}" disabled>
                 <button class="ui blue submit button" id="editPassword">Save</button>
                 <div class="column">
                     <div class="ui test toggle checkbox">
-                        <input id="passwordCheck" type="checkbox" >
+                        <input id="passwordCheck" type="checkbox">
                         <label>edit</label>
                     </div>
                 </div>
             </div>
-            </form>
-            <br>
-            <!--Comments-->
-            <form class="ui large form" method="post" action="/users/settings/township">
+        </form>
+        <br>
+        <!--Comments-->
+        <form class="ui large form" method="post" action="/users/settings/township">
             <label>Township</label>
-                <div class="ui input">
+            <div class="ui input">
                 <input id="townshipText" type="text" name="township" value="{{Township}}" disabled>
-                    <button class="ui blue submit button" id="editTownship">Save</button>
-                    <div class="column">
-                        <div class="ui test toggle checkbox">
-                            <input id="townshipCheck" type="checkbox" >
-                            <label>edit</label>
-                        </div>
+                <button class="ui blue submit button" id="editTownship">Save</button>
+                <div class="column">
+                    <div class="ui test toggle checkbox">
+                        <input id="townshipCheck" type="checkbox">
+                        <label>edit</label>
                     </div>
                 </div>
-            </form>
-            <br>
-        </div>
+            </div>
+        </form>
+        <br>
     </div>
+</div>
 </body>
 </html>

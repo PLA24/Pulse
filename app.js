@@ -10,7 +10,6 @@ var flash = require('express-flash');
 var session = require('express-session');
 var passport = require('passport');
 var index = require('./routes/index');
-var settings = require('./routes/settings');
 var users = require('./routes/users');
 var map = require('./routes/map');
 var test = require('./routes/test');
@@ -25,6 +24,7 @@ var homepage = require('./routes/homepage');
 var settings = require('./routes/settings');
 var forgot = require('./routes/forgot');
 var reset = require('./routes/reset');
+var verify = require('./routes/verify');
 var app = express();
 
 // view engine setup
@@ -77,6 +77,7 @@ app.use('/settings', settings);
 app.use('/forgot',forgot);
 app.use('/reset', reset);
 app.use('/test', test);
+app.use('/verify', verify);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

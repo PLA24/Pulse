@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET forget page. */
 router.get('/', function (req, res) {
-    res.render('forgot');
+    res.render('verify');
+});
+router.get('/:confirmToken', function (req, res) {
+
+    res.render('reset');
 });
 
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -9,12 +10,15 @@
         body > .grid {
             height: 100%;
         }
+
         .image {
             margin-top: -100px;
         }
+
         .column {
             max-width: 450px;
         }
+
         #video-bg-elem {
             position: absolute;
             top: 0;
@@ -26,16 +30,16 @@
     </style>
     <script>
         $(document)
-                .ready(function() {
+                .ready(function () {
                     $('.ui.form')
                             .form({
                                 fields: {
                                     password: {
-                                        identifier  : 'password',
+                                        identifier: 'password',
                                         rules: [
                                             {
-                                                type   : 'empty',
-                                                prompt : 'Please enter a new password'
+                                                type: 'empty',
+                                                prompt: 'Please enter a new password'
                                             }
                                         ]
                                     }
@@ -50,7 +54,8 @@
 <div class="background-wrap">
     <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
         <source src="/video/background.mp4" type="video/mp4">
-        Sorry That The Amazing video Is Not Supported Please Contact us and tell us which operating system or which browser you use Sorry!
+        Sorry That The Amazing video Is Not Supported Please Contact us and tell us which operating system or which
+        browser you use Sorry!
     </video>
 </div>
 <div class="ui middle aligned center aligned grid">
@@ -65,29 +70,29 @@
                 <h2>Reset your password</h2>
             </div>
         </div>
-    <form class="ui large form" method="post" >
-        <div class="ui stacked segment">
-            <div class="field">
-                <div class="form-group">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="New Password">
+        <form class="ui large form" method="post">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="form-group">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="New Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="form-group">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="confirm" placeholder="Confirm Password">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="field">
-                <div class="form-group">
-                    <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" name="confirm" placeholder="Confirm Password">
-                    </div>
-                </div>
+            <div class="form-group">
+                <div class="ui fluid large blue submit button">Reset</div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="ui fluid large blue submit button">Reset</div>
-        </div>
-    </form>
+        </form>
     </div>
 </div>
 </body>
