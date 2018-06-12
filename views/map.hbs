@@ -2,45 +2,46 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-  <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
-  <script src="/javascripts/openlayer.js"></script>
-  <link rel="stylesheet" href="/stylesheets/map.css" type="text/css">
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
+    <script src="/javascripts/openlayer.js"></script>
+    <link rel="stylesheet" href="/stylesheets/map.css" type="text/css">
 </head>
 
 
 <script type="text/javascript">
 
-  //datum
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1; //January is 0!
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = '0' + dd
-  }
+    //datum
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
 
-  if (mm < 10) {
-    mm = '0' + mm
-  }
-  today = mm + '/' + dd + '/' + yyyy;
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    today = mm + '/' + dd + '/' + yyyy;
 </script>
 <style>
-    #centerDiv{
-        color:white;
+    #centerDiv {
+        color: white;
         align-self: center;
         margin: 0 auto;
     }
-    #rightalignDiv{
-      align-self: center;
-      margin-right: 0;
+
+    #rightalignDiv {
+        align-self: center;
+        margin-right: 0;
 
     }
 </style>
 
 <body>
-  <div class="ui inverted menu" id="topbar">
+<div class="ui inverted menu" id="topbar">
     <div id="centerDiv">
         <div class="ui dropdown">
             <div class="text">Select township...</div>
@@ -53,30 +54,31 @@
         </div>
     </div>
     <div id="rightalignDiv">
-      <button class="ui right labeled icon button" onclick="heatmaptoggle()">
+        <button class="ui right labeled icon button" onclick="heatmaptoggle()">
 
-  <i class="fire icon"></i>
-  toggle heatmap
-</button>
+            <i class="fire icon"></i>
+            toggle heatmap
+        </button>
     </div>
-  </div>
-  <div id="map" class="map" style="z-index: 0"></div>
-  <!-- <div id="popup"></div> -->
+</div>
+<div id="map" class="map" style="z-index: 0"></div>
+<!-- <div id="popup"></div> -->
 </body>
 <script>
-  Heatmap.setVisible(false);
-  function heatmaptoggle() {
-    Heatmap.setVisible(!Heatmap.getVisible());
-  }
+    Heatmap.setVisible(false);
+
+    function heatmaptoggle() {
+        Heatmap.setVisible(!Heatmap.getVisible());
+    }
 
 
     var cLayer = '';
     $('.ui.dropdown')
             .dropdown();
 
-    $(function(){
-        $('.item.map').click(function (){
-            cLayer=this.id;
+    $(function () {
+        $('.item.map').click(function () {
+            cLayer = this.id;
             storeValue('cLayer', cLayer);
             location.reload();
         });
@@ -99,76 +101,74 @@
     }
 
 
-
-
 </script>
 <script src="/javascripts/openlayerComp.js"></script>
 <body>
-  <div class="ui tiny modal" id="infoscreen">
+<div class="ui tiny modal" id="infoscreen">
     <i class="close icon">
-  </i>
+    </i>
     <div class="header">
-      <p id="p1">TEMP NAME</p>
+        <p id="p1">TEMP NAME</p>
     </div>
     <div class="image content">
-      <div class="description">
-        <div class="content">
-          <i class="circle icon" style="color:red"></i>LIVE
-            <div class="sub header">
-              <div class="content">
-                Total amount of vehicles during
-                  <script type="text/javascript">
-                    document.write(today + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;");
-                  </script>
-                    <p style="display:inline" id="test"><b>TEMP AMOUNT</b></p>
-
-            </div>
+        <div class="description">
             <div class="content">
-              Current temperature in celsius
-                  <p style="display:inline" id="temp"><b>TEMP AMOUNT</b></p>
-          </div>
-          <div class="content">
-            Current weather status
-                <p style="display:inline" id="tempdescription"><b>TEMP AMOUNT</b></p>
-        </div>
-          </div>
-        </div>
+                <i class="circle icon" style="color:red"></i>LIVE
+                <div class="sub header">
+                    <div class="content">
+                        Total amount of vehicles during
+                        <script type="text/javascript">
+                            document.write(today + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;");
+                        </script>
+                        <p style="display:inline" id="test"><b>TEMP AMOUNT</b></p>
 
-        <div class="chartdiv">
-          <canvas id="line-chart" width="600" height="350"></canvas>
-        </div>
-        <script type="text/javascript">
+                    </div>
+                    <div class="content">
+                        Current temperature in celsius
+                        <p style="display:inline" id="temp"><b>TEMP AMOUNT</b></p>
+                    </div>
+                    <div class="content">
+                        Current weather status
+                        <p style="display:inline" id="tempdescription"><b>TEMP AMOUNT</b></p>
+                    </div>
+                </div>
+            </div>
 
-      var DataChart = new Chart(document.getElementById("line-chart"), {
-      type: 'line',
-      data: {
-        labels: [0 + " uur",6 + " uur",12 + " uur",18 + " uur",24 + " uur"],
-        datasets: [{
-            data: [0, 300, 400, 500, 10],
-            label: "aantal auto's per 6 uur",
-            borderColor: "#3e95cd",
-            fill: true
-          }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text:''
-        }
-      }
-      });
-        </script>
-        <style media="screen">
-          .chartdiv{
-            max-width: 700px;
-          }
-        </style>
-      </div>
-      <div class="actions">
-      </div>
+            <div class="chartdiv">
+                <canvas id="line-chart" width="600" height="350"></canvas>
+            </div>
+            <script type="text/javascript">
+
+                var DataChart = new Chart(document.getElementById("line-chart"), {
+                    type: 'line',
+                    data: {
+                        labels: [0 + " uur", 6 + " uur", 12 + " uur", 18 + " uur", 24 + " uur"],
+                        datasets: [{
+                            data: [0, 300, 400, 500, 10],
+                            label: "aantal auto's per 6 uur",
+                            borderColor: "#3e95cd",
+                            fill: true
+                        }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: ''
+                        }
+                    }
+                });
+            </script>
+            <style media="screen">
+                .chartdiv {
+                    max-width: 700px;
+                }
+            </style>
+        </div>
+        <div class="actions">
+        </div>
     </div>
 
-  </div>
+</div>
 </body>
 </html>

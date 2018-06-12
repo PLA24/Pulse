@@ -35,16 +35,16 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(expressSesion({secret: 'max', saveUnitilialized: false, resave: false}));
 
 //session
 app.use(session({
-  secret: 'secret',
-  saveUnitilialized: true,
-  resave: true
+    secret: 'secret',
+    saveUnitilialized: true,
+    resave: true
 
 }));
 
@@ -74,20 +74,20 @@ app.use('/pricing', pricing);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/settings', settings);
-app.use('/forgot',forgot);
+app.use('/forgot', forgot);
 app.use('/reset', reset);
 app.use('/test', test);
 app.use('/verify', verify);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -96,14 +96,6 @@ app.use(function(err, req, res, next) {
     res.render('error');
     //res.local.user = req.user || null;
 });
-
-
-
-
-
-
-
-
 
 
 module.exports = app;

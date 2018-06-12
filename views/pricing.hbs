@@ -12,28 +12,34 @@
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 
     <style type="text/css">
-        .ui.inverted.segment, .ui.primary.inverted.segment{
+        .ui.inverted.segment, .ui.primary.inverted.segment {
             background-color: #00AEEF;
         }
+
         .hidden.menu {
             display: none;
         }
+
         .masthead.segment {
             min-height: 700px;
             padding: 1em 0em;
         }
+
         .masthead .logo.item img {
             margin-right: 1em;
         }
+
         .masthead .ui.menu .ui.button {
             margin-left: 0.5em;
         }
+
         .masthead h1.ui.header {
             margin-top: 3em;
             margin-bottom: 0em;
             font-size: 4em;
             font-weight: normal;
         }
+
         .masthead h2 {
             font-size: 1.7em;
             font-weight: normal;
@@ -42,19 +48,24 @@
         .ui.vertical.stripe {
             padding: 8em 0em;
         }
+
         .ui.vertical.stripe h3 {
             font-size: 2em;
         }
+
         .ui.vertical.stripe .button + h3,
         .ui.vertical.stripe p + h3 {
             margin-top: 3em;
         }
+
         .ui.vertical.stripe .floated.image {
             clear: both;
         }
+
         .ui.vertical.stripe p {
             font-size: 1.33em;
         }
+
         .ui.vertical.stripe .horizontal.divider {
             margin: 3em 0em;
         }
@@ -62,6 +73,7 @@
         .quote.stripe.segment {
             padding: 0em;
         }
+
         .quote.stripe.segment .grid .column {
             padding-top: 5em;
             padding-bottom: 5em;
@@ -79,20 +91,25 @@
             .ui.fixed.menu {
                 display: none !important;
             }
+
             .secondary.pointing.menu .item,
             .secondary.pointing.menu .menu {
                 display: none;
             }
+
             .secondary.pointing.menu .toc.item {
                 display: block;
             }
+
             .masthead.segment {
                 min-height: 350px;
             }
+
             .masthead h1.ui.header {
                 font-size: 2em;
                 margin-top: 1.5em;
             }
+
             .masthead h2 {
                 margin-top: 0.5em;
                 font-size: 1.5em;
@@ -108,16 +125,16 @@
     <script src="../dist/components/transition.js"></script>
     <script>
         $(document)
-                .ready(function() {
+                .ready(function () {
 
                     // fix menu when passed
                     $('.masthead')
                             .visibility({
                                 once: false,
-                                onBottomPassed: function() {
+                                onBottomPassed: function () {
                                     $('.fixed.menu').transition('fade in');
                                 },
-                                onBottomPassedReverse: function() {
+                                onBottomPassedReverse: function () {
                                     $('.fixed.menu').transition('fade out');
                                 }
                             })
@@ -152,15 +169,18 @@
                 </div>
                 <div class="column" style="background-color: #00AEEF;">
                     <h3 style="color: white;">Lorem ipsum</h3>
-                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
+                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
                 <div class="column" style="background-color: #2185d0;">
                     <h3 style="color: white;">Lorem ipsum</h3>
-                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
+                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
                 <div class="column" style="background-color: #00AEEF;">
                     <h3 style="color: white;">Lorem ipsum</h3>
-                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
+                    <p style="color: #363945;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis </p>
                 </div>
             </div>
         </div>
@@ -187,12 +207,14 @@
             <div class="center aligned row">
                 <div class="column">
                     <i class="user icon" style="font-size: 5em"></i>
-                    <h3 style="font-size: 20px;">"There will be almost no traffic jams in the year 2025. Thanks to the Pulse car tracking platform."</h3>
+                    <h3 style="font-size: 20px;">"There will be almost no traffic jams in the year 2025. Thanks to the
+                        Pulse car tracking platform."</h3>
                     <p><em><u>Tim Klemink City Councilor of Utrecht</u></em></p>
                 </div>
                 <div class="column">
                     <i class="user icon" style="font-size: 5em"></i>
-                    <h3 style="font-size: 20px;">"It's amazing how we can gather information about all the cars in our region. This way we can analyse a lot and start improving traffic."</h3>
+                    <h3 style="font-size: 20px;">"It's amazing how we can gather information about all the cars in our
+                        region. This way we can analyse a lot and start improving traffic."</h3>
                     <p>
                         <em><u>Eberhard van der Laan mayor of Amsterdam.</u></em>
                     </p>
@@ -205,7 +227,8 @@
         <div class="ui container">
             <div class="ui stackable inverted divided equal height stackable grid">
                 <div class="three wide column">
-                    <img src="/images/pulselogo.png" class="ui avatar image" style="width: 150px; height:150px; margin: -30px 0px 0px -100px">
+                    <img src="/images/pulselogo.png" class="ui avatar image"
+                         style="width: 150px; height:150px; margin: -30px 0px 0px -100px">
                 </div>
                 <div class="three wide column">
                     <div class="ui inverted link list" style="color: white;">
